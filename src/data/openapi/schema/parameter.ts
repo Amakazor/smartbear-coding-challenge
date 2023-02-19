@@ -1,7 +1,6 @@
 import { z } from "zod";
 
-import { collectionFormatMulti } from "./collection-format";
-import { items, itemsWithFile } from "./items";
+import { itemsMulti, itemsWithFile } from "./items";
 import { schema } from "./schema";
 
 const parameterBase = z.object({
@@ -13,29 +12,22 @@ const parameterBase = z.object({
 const parameterInBody = parameterBase.extend({
     in: z.literal("body"),
     schema: schema,
-});
+}).and(z.object({}));
 
-const parameterInQuery = parameterBase
-    .and(items)
+export const parameterInQuery = parameterBase
+    .and(itemsMulti)
     .and(z.object({
         in: z.literal("query"),
         allowEmptyValue: z.boolean().optional(),
-        collectionFormat: collectionFormatMulti.optional(),
     }));
 
 const parameterInHeader = parameterBase
-    .and(items)
-    .and(z.object({
-        in: z.literal("header"),
-        collectionFormat: collectionFormatMulti.optional(),
-    }));
+    .and(itemsMulti)
+    .and(z.object({ in: z.literal("header") }));
 
 const parameterInFormData = parameterBase
     .and(itemsWithFile)
-    .and(z.object({
-        in: z.literal("formData"),
-        collectionFormat: collectionFormatMulti.optional(),
-    }));
+    .and(z.object({ in: z.literal("formData") }));
 
 const parameterInPath = parameterBase.extend({
     in: z.literal("path"),

@@ -64,4 +64,5 @@ export const statusCode = z.union([
     z.literal("508"),
     z.literal("510"),
     z.literal("511"),
+    z.literal("default"),
 ]);

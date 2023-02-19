@@ -10,4 +10,4 @@ const response = z.object({
     examples: z.record(z.string(), z.any()).optional(),
 });
 
-export const responses = z.object({ default: response.optional() }).and(z.record(statusCode, response));
+export const responses = z.record(statusCode, response);

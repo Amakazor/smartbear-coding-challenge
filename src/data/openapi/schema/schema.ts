@@ -23,6 +23,6 @@ export const schema: z.ZodType<typeofSchema> = schemaBase.and(z.union([
     primitives,
     z.object({ $ref: z.string() }),
     arrayBase.extend({ items: z.lazy(() => schema) }),
-    objectBase.extend({ properties: z.record(z.string(), z.lazy(() => schema)) }),
+    objectBase.extend({ properties: z.record(z.string(), z.lazy(() => schema)).optional() }),
 ]));
 

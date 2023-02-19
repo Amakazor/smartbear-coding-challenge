@@ -1,17 +1,27 @@
 import { describe, expect, it } from "vitest";
 
-import { parameter } from "./parameter";
+import { parameter, parameterInQuery } from "./parameter";
 
 describe("Parameter schema", () => {
     it("should parse well formed query parameter data", () => {
         const fixture = {
-            name: "a",
-            in: "query",
-            description: "a",
-            required: true,
-            type: "string",
+            "name": "status",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "available",
+                    "pending",
+                    "sold",
+                ],
+                "default": "available",
+            },
+            "collectionFormat": "multi",
         };
-        const result = parameter.safeParse(fixture);
+        const result = parameterInQuery.safeParse(fixture);
         expect(result.success).toBe(true);
     });
 
