@@ -75,6 +75,6 @@ module.exports = {
         "react/no-children-prop": "error",
         "react/react-in-jsx-scope": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "error",
+        "react/jsx-wrap-multilines": ["error", { "declaration": "parens-new-line", "assignment": "parens-new-line", "return": "parens-new-line" }],
     }
 };

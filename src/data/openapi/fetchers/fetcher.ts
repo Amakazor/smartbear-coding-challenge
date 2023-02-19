@@ -5,7 +5,7 @@ import { fetcher } from "../../fetchers/fetcher";
 import { swagger } from "../schema/swagger";
 
 const OpenapiRequestSchema = z.void();
-const OpenapiResponseSchema = swagger;
+export const OpenapiResponseSchema = swagger;
 
 export const fetchApiSpec = fetcher<
     z.infer<typeof OpenapiRequestSchema>,
