@@ -17,8 +17,8 @@ export default defineConfig({
     },
     test: {
         env: {
-            VITE_API_BASE_URL: "test",
-            VITE_API_SCHEMA_PATH: "test",
+            VITE_API_BASE_URL: "https://base",
+            VITE_API_SCHEMA_PATH: "/spec.json",
         },
         coverage: {
             reporter: ["text", "json", "html", "lcov"],
@@ -26,5 +26,6 @@ export default defineConfig({
             all: true,
             include: ["src/**/*.{ts,tsx,js,jsx}"],
         },
+        setupFiles: ["./src/test-setup.ts"],
     },
 });
