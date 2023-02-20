@@ -1,11 +1,13 @@
 import { Router } from "@components/router";
-import { OpenApiDataContextProvider } from "@context/open-api-data-context";
-import { useOpenapi } from "@hooks/use-openapi";
+import { OpenApiContextProvider } from "@context/open-api-context";
+import { OpenApi } from "@data/openapi/models/open-api";
+import { useOpenApi } from "@hooks/use-open-api";
 import React from "react";
 
-
-export const App = () => (
-    <OpenApiDataContextProvider value={useOpenapi()}>
-        <Router/>
-    </OpenApiDataContextProvider>
-);
+export const App = () => {
+    return (
+        <OpenApiContextProvider value={OpenApi.FromOpenApiData(useOpenApi())}>
+            <Router/>
+        </OpenApiContextProvider>
+    );
+};

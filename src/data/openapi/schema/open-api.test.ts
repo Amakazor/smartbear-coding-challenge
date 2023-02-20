@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { swagger } from "./swagger";
-import { swaggerFixture } from "./swagger.fixture";
+import { openApi } from "./open-api";
+import { openApiFixture } from "./open-api-fixture";
 
-describe("Swagger schema", () => {
+describe("OpenApi schema", () => {
     it("should parse well formed data", () => {
-        const result = swagger.safeParse(swaggerFixture);
+        const result = openApi.safeParse(openApiFixture);
         expect(result.success).toBe(true);
     });
 
@@ -17,7 +17,7 @@ describe("Swagger schema", () => {
             },
             paths: {},
         };
-        const result = swagger.safeParse(fixture);
+        const result = openApi.safeParse(fixture);
         expect(result.success).toBe(false);
     });
 });

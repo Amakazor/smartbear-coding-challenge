@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    a:focus-visible,
+    button:focus-visible {
+        @apply outline-4;
+        @apply outline-offset-[-4px];
+        @apply outline-dotted;
+        @apply outline-pink-500;
+    }
+}

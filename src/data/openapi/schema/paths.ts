@@ -32,3 +32,6 @@ const path = z.object({
 });
 
 export const paths = z.record(z.string().startsWith("/"), path);
+
+export type Path = z.infer<typeof path>;
+export type Paths = z.infer<typeof paths>;

@@ -2,10 +2,10 @@ import { environment } from "@utility/environment";
 import { z } from "zod";
 
 import { fetcher } from "../../fetchers/fetcher";
-import { swagger } from "../schema/swagger";
+import { openApi } from "../schema/open-api";
 
 const OpenapiRequestSchema = z.void();
-export const OpenapiResponseSchema = swagger;
+export const OpenapiResponseSchema = openApi;
 
 export const fetchApiSpec = fetcher<
     z.infer<typeof OpenapiRequestSchema>,

@@ -3,56 +3,56 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { z } from "zod";
 
-export enum OpenapiFetchingState {
+export enum OpenApiDataState {
     Loading = "loading",
     FetchingError = "fetchingError",
     ParsingError = "parsingError",
     Success = "success",
 }
 
-export type OpenapiData = {
-    state: OpenapiFetchingState.Loading;
+export type OpenApiData = {
+    state: OpenApiDataState.Loading;
 } | {
-    state: OpenapiFetchingState.FetchingError;
+    state: OpenApiDataState.FetchingError;
     error: unknown;
 } | {
-    state: OpenapiFetchingState.ParsingError;
+    state: OpenApiDataState.ParsingError;
     error: z.ZodError;
 } | {
-    state: OpenapiFetchingState.Success;
+    state: OpenApiDataState.Success;
     data: z.infer<typeof OpenapiResponseSchema>;
 };
 
-export const useOpenapi = ():OpenapiData => {
-    const [currentResult, setCurrentResult] = useState<OpenapiData>({ state: OpenapiFetchingState.Loading });
+export const useOpenApi = ():OpenApiData => {
+    const [currentResult, setCurrentResult] = useState<OpenApiData>({ state: OpenApiDataState.Loading });
 
     const result = useQuery("api-spec", () => fetchApiSpec());
 
     useEffect(() => {
         setCurrentResult(() => {
             if (result.isLoading)
-                return { state: OpenapiFetchingState.Loading };
+                return { state: OpenApiDataState.Loading };
 
             if (result.isError)
                 return {
-                    state: OpenapiFetchingState.FetchingError,
+                    state: OpenApiDataState.FetchingError,
                     error: result.error,
                 };
 
             if (result.isSuccess && !result.data.success)
                 return {
-                    state: OpenapiFetchingState.ParsingError,
+                    state: OpenApiDataState.ParsingError,
                     error: result.data.error,
                 };
 
             if (result.isSuccess && result.data.success)
                 return {
-                    state: OpenapiFetchingState.Success,
+                    state: OpenApiDataState.Success,
                     data: result.data.data,
                 };
 
             return {
-                state: OpenapiFetchingState.FetchingError,
+                state: OpenApiDataState.FetchingError,
                 error: null,
             };
         });

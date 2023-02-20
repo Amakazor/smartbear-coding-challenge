@@ -2,7 +2,8 @@ module.exports = {
     "root": true,
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -31,7 +32,7 @@ module.exports = {
         "eqeqeq": "error",
         "no-trailing-spaces": "error",
         "no-console": "warn",
-        "max-len": ["error", { "code": 120 }],
+        "max-len": ["error", { "code": 200 }],
         "object-curly-newline": ["error", { "multiline": true }],
         "object-property-newline": "error",
         "comma-dangle": ["error", "always-multiline"],

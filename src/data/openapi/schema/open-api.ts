@@ -6,7 +6,7 @@ import { schema } from "./schema";
 import { securityDefinitions } from "./security-definitions";
 import { tags } from "./tags";
 
-export const swagger = z.object({
+export const openApi = z.object({
     swagger: z.literal("2.0"),
     info: info,
     host: z.string().optional(),
@@ -20,3 +20,5 @@ export const swagger = z.object({
     security: z.record(z.string(), z.array(z.string())).optional(),
     tags: tags.optional(),
 });
+
+export type OpenApiSchema = z.infer<typeof openApi>;
