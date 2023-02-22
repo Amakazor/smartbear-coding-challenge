@@ -32,7 +32,14 @@ export enum OperationMethod {
 const path = z.object({
     $ref: z.string().optional(),
     parameters: z.array(z.union([parameter, z.object({ $ref: z.string() })])).optional(),
-}).and(z.record(z.nativeEnum(OperationMethod), operation));
+    [OperationMethod.get]    : operation.optional(),
+    [OperationMethod.put]    : operation.optional(),
+    [OperationMethod.post]   : operation.optional(),
+    [OperationMethod.delete] : operation.optional(),
+    [OperationMethod.options]: operation.optional(),
+    [OperationMethod.head]   : operation.optional(),
+    [OperationMethod.patch]  : operation.optional(),
+});
 
 export const paths = z.record(z.string().startsWith("/"), path);
 

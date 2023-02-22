@@ -1,4 +1,4 @@
-import { useMenuItems, useOpenable } from "@hooks/.";
+import { useMenuItems, useOpenable } from "@hooks";
 import React, { useMemo } from "react";
 
 import { MenuButton } from "./menu-button";

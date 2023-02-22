@@ -9,12 +9,12 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@utility": path.resolve(__dirname, "./src/utility/"),
-            "@components": path.resolve(__dirname, "./src/components/"),
-            "@data": path.resolve(__dirname, "./src/data/"),
-            "@context": path.resolve(__dirname, "./src/context/"),
-            "@hooks": path.resolve(__dirname, "./src/hooks/"),
-            "@routes": path.resolve(__dirname, "./src/routes/"),
+            "@utility": path.resolve(__dirname, "./src/utility"),
+            "@components": path.resolve(__dirname, "./src/components"),
+            "@data": path.resolve(__dirname, "./src/data"),
+            "@context": path.resolve(__dirname, "./src/context"),
+            "@hooks": path.resolve(__dirname, "./src/hooks"),
+            "@routes": path.resolve(__dirname, "./src/routes"),
         },
     },
     test: {

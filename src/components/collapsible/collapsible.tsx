@@ -1,4 +1,4 @@
-import { useOpenable } from "@hooks/.";
+import { useOpenable } from "@hooks";
 
 import { CollapsibleBase, CollapsibleBaseProps } from "./collapsible-base";
 

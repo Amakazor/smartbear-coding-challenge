@@ -1,6 +1,6 @@
 import { Parameter, ParameterOrRef, Parameters } from "@data/openapi/schema/parameter";
 import { Operation, OperationMethod, Path } from "@data/openapi/schema/paths";
-import { OpenApiData } from "@hooks/.";
+import { OpenApiData } from "@hooks";
 import { DataState } from "@utility/data-state";
 
 import { OpenApiSchema } from "../schema/open-api";
@@ -35,6 +35,22 @@ export class OpenApi {
 
     get Description() {
         return this._dto.info.description;
+    }
+
+    get Title() {
+        return this._dto.info.title;
+    }
+
+    get Contact() {
+        return this._dto.info.contact;
+    }
+
+    get License() {
+        return this._dto.info.license;
+    }
+
+    get TermsOfService() {
+        return this._dto.info.termsOfService;
     }
 
     static Empty = new OpenApi({

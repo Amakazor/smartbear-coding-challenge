@@ -1,9 +1,8 @@
 import { CodeBox } from "@components/code-box";
+import { ExternalLink } from "@components/external-link";
 import { TextHelper } from "@utility/text-helper";
 import { Code, InlineCode, Link, Node, Paragraph, Parent, Root, Text } from "@yozora/ast";
 import GfmParser from "@yozora/parser-gfm";
-
-import { ExternalLink } from "../../external-link";
 
 type GfmProps = {
     data: string;

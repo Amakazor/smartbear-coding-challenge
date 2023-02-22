@@ -1,7 +1,7 @@
 import { Router } from "@components/router";
 import { OpenApiContextProvider } from "@context/.";
 import { OpenApi } from "@data/openapi/models/open-api";
-import { useOpenApi } from "@hooks/.";
+import { useOpenApi } from "@hooks";
 import React from "react";
 
 export const App = () => {
