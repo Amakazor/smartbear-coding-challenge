@@ -33,6 +33,10 @@ export class OpenApi {
         return Object.keys(this._dto.securityDefinitions ?? {});
     }
 
+    get Description() {
+        return this._dto.info.description;
+    }
+
     static Empty = new OpenApi({
         swagger: "2.0",
         info: {
