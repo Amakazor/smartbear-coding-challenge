@@ -12,10 +12,11 @@ import { Responses } from "./responses/responses";
 type OperationProps = {
     name: OperationMethod;
     operation: OperationSchema;
+    openByDefault?: boolean;
 }
 
 export const Operation = ({
-    name, operation: {
+    name, openByDefault, operation: {
         consumes,
         description,
         operationId,
@@ -25,9 +26,10 @@ export const Operation = ({
         summary,
         tags,
     },
+
 }:OperationProps) => {
     return (
-        <Collapsible className={"my-2"}
+        <Collapsible className={"my-2"} openByDefault={openByDefault}
             header={<Header name={name} pathName={summary ? TextHelper.capitalizeFirstLetter(summary) : name} tags={tags}/>}
         >
             <div className={"flex flex-col gap-8 items-start relative min-h-[1rem]"}>
@@ -40,3 +42,5 @@ export const Operation = ({
         </Collapsible>
     );
 };
+
+Operation.defaultProps = { openByDefault: false };
