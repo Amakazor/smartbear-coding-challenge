@@ -66,3 +66,5 @@ export const statusCode = z.union([
     z.literal("511"),
     z.literal("default"),
 ]);
+
+export type StatusCode = z.infer<typeof statusCode>;

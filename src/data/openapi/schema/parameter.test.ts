@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { parameter, parameterInQuery } from "./parameter";
+import { parameter } from "./parameter";
 
 describe("Parameter schema", () => {
     it("should parse well formed query parameter data", () => {
@@ -21,7 +21,7 @@ describe("Parameter schema", () => {
             },
             "collectionFormat": "multi",
         };
-        const result = parameterInQuery.safeParse(fixture);
+        const result = parameter.safeParse(fixture);
         expect(result.success).toBe(true);
     });
 
@@ -70,6 +70,7 @@ describe("Parameter schema", () => {
             type: "file",
         };
         const result = parameter.safeParse(fixture);
+
         expect(result.success).toBe(true);
     });
 

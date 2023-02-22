@@ -1,10 +1,10 @@
 import { MenuItemProps, WithoutSubItemProps } from "@components/menu/menu-item";
-import { openApiContext } from "@context/open-api-context";
+import { openApiContext } from "@context/.";
 import { useContext } from "react";
 
-const stringToMenuItem = (base: string, path: string): WithoutSubItemProps => {
+const stringToMenuItem = (base: string, path: string, title?:string): WithoutSubItemProps => {
     return {
-        title: path,
+        title: title ?? path,
         url: `${base}/${encodeURIComponent(encodeURIComponent(path))}`,
     };
 };
@@ -12,10 +12,10 @@ const stringToMenuItem = (base: string, path: string): WithoutSubItemProps => {
 export const useMenuItems = () => {
     const openApi = useContext(openApiContext);
 
-    const paths = openApi.PathNames.map((path) => stringToMenuItem("/paths", path));
-    const tags = openApi.TagNames.map((tag) => stringToMenuItem("/tags", tag));
-    const definitions = openApi.DefinitionNames.map((definition) => stringToMenuItem("/definitions", definition));
-    const securityDefinitions = openApi.SecurityDefinitionNames.map((securityDefinition) => stringToMenuItem("/security-definitions", securityDefinition));
+    const paths = openApi.apiData.PathNames.map((path) => stringToMenuItem("/paths", path));
+    const tags = openApi.apiData.TagNames.map((tag) => stringToMenuItem("/tags", tag));
+    const definitions = openApi.apiData.DefinitionNames.map((definition) => stringToMenuItem("/definitions", definition));
+    const securityDefinitions = openApi.apiData.SecurityDefinitionNames.map((securityDefinition) => stringToMenuItem("/security-definitions", securityDefinition));
 
     const menuItems:MenuItemProps[] = [{
         title: "Paths",

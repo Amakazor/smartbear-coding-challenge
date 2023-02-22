@@ -5,7 +5,7 @@ export type MainProps = {
 }
 
 export const Main = ({ children }:MainProps) => (
-    <main>
+    <main className={"flex flex-col flex-grow items-center py-4"}>
         {children}
     </main>
 );

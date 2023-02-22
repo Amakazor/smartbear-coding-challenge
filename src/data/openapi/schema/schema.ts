@@ -26,3 +26,4 @@ export const schema: z.ZodType<typeofSchema> = schemaBase.and(z.union([
     objectBase.extend({ properties: z.record(z.string(), z.lazy(() => schema)).optional() }),
 ]));
 
+export type Schema = z.infer<typeof schema>;

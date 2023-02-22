@@ -11,3 +11,6 @@ const response = z.object({
 });
 
 export const responses = z.record(statusCode, response);
+
+export type Response = z.infer<typeof response>;
+export type Responses = z.infer<typeof responses>;

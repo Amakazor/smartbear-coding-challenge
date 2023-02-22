@@ -17,3 +17,5 @@ export const arrayBaseMulti = z.object({
     uniqueItems: z.boolean().optional(),
     collectionFormat: collectionFormatMulti.optional(),
 });
+
+export type ArrayBase = z.infer<typeof arrayBase>;

@@ -57,3 +57,6 @@ export const primitiveTypes = z.union([
     string.pick({ type: true }),
     boolean.pick({ type: true }),
 ]);
+
+export type Primitives = z.infer<typeof primitives>;
+export type PrimitiveTypes = z.infer<typeof primitiveTypes>;

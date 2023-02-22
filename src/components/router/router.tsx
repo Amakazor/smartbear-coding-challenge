@@ -1,4 +1,6 @@
 import { Layout } from "@components/layout";
+import { Home, Path, Paths } from "@routes/.";
+import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import {
     createBrowserRouter,
     RouterProvider,
@@ -7,12 +9,17 @@ import {
 const router = createBrowserRouter([
     {
         element: <Layout/>,
-        children: [
-            {
-                path: "/",
-                element: <div>Home</div>,
-            },
-        ],
+        children: [{
+            path: "/",
+            element: <Home/>,
+        }, {
+            path: "/paths",
+            element: <Paths/>,
+        }, {
+            path: "/paths/:pathId",
+            element: <Path/>,
+            loader: ({ params }) => stringParameterLoader(params, "pathId"),
+        }],
         errorElement: (
             <div className={"text-6xl text-red-600 font-bold flex justify-center items-center min-h-screen font-sans"}>
                 404

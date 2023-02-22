@@ -1,5 +1,5 @@
 import { Span } from "@components/span/span";
-import { useOpenable } from "@hooks/use-openable";
+import { useOpenable } from "@hooks/.";
 import React from "react";
 import * as Icon from "react-feather";
 

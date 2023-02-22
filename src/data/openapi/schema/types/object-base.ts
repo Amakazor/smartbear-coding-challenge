@@ -13,3 +13,5 @@ export const objectBase = z.object({
         z.object({ $ref: z.string() }),
     ]).optional(),
 });
+
+export type ObjectBase = z.infer<typeof objectBase>;
