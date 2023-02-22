@@ -62,7 +62,7 @@ const parseVariable = (name: string | null, variable: VariableSchema, addSemicol
     if (isObject(variable)) {
         return (
             <>
-                { nameElement && <div>{nameElement}{" {"}</div>}
+                { nameElement && <div>{nameElement}</div>}{" {"}
                 {toPairs(variable.properties).map(([name, variable]) => (
                     <div key={name} className={"ml-4"}>
                         {parseVariable(name, variable)}
