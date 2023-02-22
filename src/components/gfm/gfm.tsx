@@ -2,7 +2,8 @@ import { CodeBox } from "@components/code-box";
 import { TextHelper } from "@utility/text-helper";
 import { Code, InlineCode, Link, Node, Paragraph, Parent, Root, Text } from "@yozora/ast";
 import GfmParser from "@yozora/parser-gfm";
-import { ExternalLink } from "react-feather";
+
+import { ExternalLink } from "../../external-link";
 
 type GfmProps = {
     data: string;
@@ -33,10 +34,9 @@ const parseGfmNode = (node: Node) => {
 
     if (isLink(node)) {
         return (
-            <a key={key} href={node.url} className={"underline group hover:decoration-blue-300"}>
+            <ExternalLink key={key} href={node.url}>
                 {handleChildren(node)}
-                <ExternalLink size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>
-            </a>
+            </ExternalLink>
         );
     }
 
