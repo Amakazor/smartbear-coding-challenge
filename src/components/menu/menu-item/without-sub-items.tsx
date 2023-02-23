@@ -29,7 +29,7 @@ export const WithoutSubItems = ({ url, title, isSubItem, closeParent, tabbable, 
 
     return (
         <Wrapper isSubItem={isSubItem}>
-            <Link to={url} onBlur={handleBlur} ref={element} className={"outline-safe md:py-2"} tabIndex={tabbable ? 0 : -1}>
+            <Link to={url} onClick={() => closeParent?.()} onBlur={handleBlur} ref={element} className={"outline-safe md:py-2"} tabIndex={tabbable ? 0 : -1}>
                 <Span variant={isSubItem ? "menu-small" : "menu"} className={`${horizontalPadding} ${isBold}`}>
                     {title}
                     <ChevronRight className={chevronHidden}/>
