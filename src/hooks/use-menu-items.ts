@@ -15,7 +15,6 @@ export const useMenuItems = () => {
     const paths = openApi.apiData.PathNames.map((path) => stringToMenuItem("/paths", path));
     const tags = openApi.apiData.TagNames.map((tag) => stringToMenuItem("/tags", tag));
     const definitions = openApi.apiData.DefinitionNames.map((definition) => stringToMenuItem("/definitions", definition));
-    const securityDefinitions = openApi.apiData.SecurityDefinitionNames.map((securityDefinition) => stringToMenuItem("/security-definitions", securityDefinition));
 
     const menuItems:MenuItemProps[] = [{
         title: "Paths",
@@ -38,13 +37,6 @@ export const useMenuItems = () => {
             url: "/definitions",
             bold: true,
         }, ...definitions],
-    }, {
-        title: "Security Definitions",
-        subItems: [{
-            title: "Overview",
-            url: "/security-definitions",
-            bold: true,
-        }, ...securityDefinitions],
     }];
 
     return menuItems;
