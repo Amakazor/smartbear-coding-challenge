@@ -1,10 +1,15 @@
 import { Layout } from "@components";
-import { Definition, Definitions, Home, Path, Paths, Tag, Tags } from "@routes";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
+import { lazy } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const Home = lazy(() => import("@routes/home"));
+const Paths = lazy(() => import("@routes/paths"));
+const Path = lazy(() => import("@routes/path"));
+const Tags = lazy(() => import("@routes/tags"));
+const Tag = lazy(() => import("@routes/tag"));
+const Definitions = lazy(() => import("@routes/definitions"));
+const Definition = lazy(() => import("@routes/definition"));
 
 const router = createBrowserRouter([
     {

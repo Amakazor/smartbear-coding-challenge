@@ -1,5 +1,4 @@
 import { Span } from "@components";
-import React from "react";
 import { Menu as MenuIcon } from "react-feather";
 
 type MenuButtonProps = {

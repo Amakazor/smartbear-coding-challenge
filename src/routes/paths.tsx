@@ -3,7 +3,7 @@ import { openApiContext } from "@context";
 import { toPairs } from "lodash";
 import { useContext } from "react";
 
-export const Paths = () => {
+const Paths = () => {
     const { apiData: { Paths: PathsData }, state } = useContext(openApiContext);
     const pathsPairs = toPairs(PathsData);
 
@@ -16,3 +16,5 @@ export const Paths = () => {
         </ConditionalRenderer>
     );
 };
+
+export default Paths;

@@ -7,7 +7,7 @@ import { toPairs } from "lodash";
 import { useContext } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
 
-export const Tag = () => {
+const Tag = () => {
     const tagId = useLoaderData() as ReturnType<typeof stringParameterLoader>;
 
     const { apiData: { PathsByTags }, state } = useContext(openApiContext);
@@ -23,3 +23,5 @@ export const Tag = () => {
         </ConditionalRenderer>
     );
 };
+
+export default Tag;

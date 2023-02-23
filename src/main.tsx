@@ -1,6 +1,6 @@
 import "./index.pcss";
 
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -9,9 +9,9 @@ import { App } from "./app";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-    <React.StrictMode>
+    <StrictMode>
         <QueryClientProvider client={queryClient}>
             <App/>
         </QueryClientProvider>
-    </React.StrictMode>,
+    </StrictMode>,
 );

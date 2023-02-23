@@ -7,7 +7,7 @@ export const useOpenable = (initial: boolean) => {
     const open = () => setIsOpen(true);
 
     return {
-        isOpen: openStates,
+        isOpen,
         toggle,
         close,
         open,

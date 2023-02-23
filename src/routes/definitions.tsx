@@ -3,7 +3,7 @@ import { openApiContext } from "@context";
 import { toPairs } from "lodash";
 import { useContext } from "react";
 
-export const Definitions = () => {
+const Definitions = () => {
     const { apiData: { Definitions: DefinitionsData }, state } = useContext(openApiContext);
     const definitionPairs = toPairs(DefinitionsData);
 
@@ -18,3 +18,5 @@ export const Definitions = () => {
         </ConditionalRenderer>
     );
 };
+
+export default Definitions;

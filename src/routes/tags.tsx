@@ -4,7 +4,7 @@ import { TextHelper } from "@utility/text-helper";
 import { toPairs } from "lodash";
 import { useContext } from "react";
 
-export const Tags = () => {
+const Tags = () => {
     const { apiData: { PathsByTags }, state } = useContext(openApiContext);
 
     const tableOfContentsItems = toPairs(PathsByTags).map(([tag]) => ({
@@ -21,3 +21,5 @@ export const Tags = () => {
         </ConditionalRenderer>
     );
 };
+
+export default Tags;

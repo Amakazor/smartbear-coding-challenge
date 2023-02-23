@@ -1,5 +1,3 @@
-import React from "react";
-
 import { WithSubItems, WithSubItemsProps } from "./with-sub-items";
 import { WithoutSubItemProps, WithoutSubItems } from "./without-sub-items";
 

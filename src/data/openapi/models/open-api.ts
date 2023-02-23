@@ -32,7 +32,7 @@ export class OpenApi {
 
         for (const [pathName, path] of toPairs(this.Paths)) {
             for (const [operationName, operation] of OpenApi.extractOperationsFromPath(path)) {
-                for (const tag of operation.tags ?? []) {"";
+                for (const tag of operation.tags ?? []) {
                     if (pathsByTags[tag][pathName] === undefined) {
                         pathsByTags[tag][pathName] = {
                             ...OpenApi.extractBaseDataFromPath(path),

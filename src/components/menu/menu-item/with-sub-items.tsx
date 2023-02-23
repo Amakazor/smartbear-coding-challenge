@@ -1,6 +1,5 @@
 import { Span } from "@components";
 import { useOpenable } from "@hooks";
-import React from "react";
 import { ChevronDown } from "react-feather";
 
 import { MenuItemBaseProps } from "./menu-item";

@@ -7,7 +7,7 @@ import { toPairs } from "lodash";
 import { useContext } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
 
-export const Definition = () => {
+const Definition = () => {
     const definitionId = useLoaderData() as ReturnType<typeof stringParameterLoader>;
 
     const { apiData: { Definitions }, state } = useContext(openApiContext);
@@ -25,3 +25,5 @@ export const Definition = () => {
         </ConditionalRenderer>
     );
 };
+
+export default Definition;

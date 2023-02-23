@@ -1,6 +1,5 @@
 import { Span } from "@components";
-import { useRef } from "react";
-import { type FocusEvent } from "react";
+import { type FocusEvent, useRef } from "react";
 import { ChevronRight } from "react-feather";
 import { Link } from "react-router-dom";
 
