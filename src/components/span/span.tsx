@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLProps, ReactNode } from "react";
 
 export type SpanVariant = "title" | "body" | "body-small" | "body-large" | "body-very-large" | "menu" | "menu-small" | "body-uncolored" | "body-uncolored-small" | "method" | "operation-id"
 
@@ -6,7 +6,7 @@ type SpanProps = {
     children?: ReactNode;
     variant: SpanVariant;
     className?: string;
-}
+} & HTMLProps<HTMLSpanElement>
 
 const classNameLookup:Record<SpanVariant, string> = {
     "title": "text-2xl text-white font-bold",
@@ -22,9 +22,9 @@ const classNameLookup:Record<SpanVariant, string> = {
     "operation-id": "text-sm text-gray-400",
 };
 
-export const Span = ({ children, variant, className }:SpanProps) => {
+export const Span = ({ children, variant, className, ...props }:SpanProps) => {
     return (
-        <span className={`${classNameLookup[variant]} ${className}`}>
+        <span {...props} className={`${classNameLookup[variant]} ${className}`}>
             {children}
         </span>
     );

@@ -14,4 +14,5 @@ const cyrb53 = (str: string, seed = 0) => {
 export class TextHelper {
     public static capitalizeFirstLetter = (string:string) => string[0].toUpperCase() + string.slice(1);
     public static hash = (string:string) => cyrb53(string);
+    public static clean = (string:string) => string.replace(/[^\dA-Za-z]/g, "_");
 }

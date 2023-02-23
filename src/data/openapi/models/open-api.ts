@@ -1,7 +1,8 @@
 import { Parameter, ParameterOrRef, Parameters } from "@data/openapi/schema/parameter";
-import { Operation, OperationMethod, Path } from "@data/openapi/schema/paths";
+import { Operation, OperationMethod, Path, Paths } from "@data/openapi/schema/paths";
 import { OpenApiData } from "@hooks";
 import { DataState } from "@utility/data-state";
+import { toPairs } from "lodash";
 
 import { OpenApiSchema } from "../schema/open-api";
 
@@ -9,6 +10,9 @@ export type NamedOperation = [
     OperationMethod,
     Operation
 ]
+
+export type PathBaseData = Path["parameters"]  | Path["$ref"]
+
 
 export class OpenApi {
     constructor(private _dto: OpenApiSchema) {}
@@ -19,6 +23,33 @@ export class OpenApi {
 
     get Paths() {
         return this._dto.paths;
+    }
+
+    get PathsByTags(): Record<string, Paths> {
+        const pathsByTags = this.TagNames?.reduce((tags, tag) => {
+            tags[tag] = {};
+            return tags;
+        }, {} as Record<string, Paths>) ?? {};
+
+        for (const [pathName, path] of toPairs(this.Paths)) {
+            for (const [operationName, operation] of OpenApi.ExtractOperationsFromPath(path)) {
+                for (const tag of operation.tags ?? []) {
+                    if (pathsByTags[tag][pathName] !== undefined) {
+                        pathsByTags[tag][pathName] = {
+                            ...pathsByTags[tag][pathName],
+                            [operationName]: operation,
+                        };
+                    } else {
+                        pathsByTags[tag][pathName] = {
+                            ...OpenApi.ExtractBaseDataFromPath(path),
+                            [operationName]: operation,
+                        };
+                    }
+                }
+            }
+        }
+
+        return pathsByTags;
     }
 
     get TagNames(): string[] {
@@ -64,11 +95,16 @@ export class OpenApi {
 
     static FromOpenApiData = (openApiData: OpenApiData) => openApiData.state === DataState.Success ? new OpenApi(openApiData.data) : OpenApi.Empty;
 
-    private static IsNamedOperation = (entry: [string, unknown]): entry is NamedOperation => entry[0] in OperationMethod;
+    private static IsNamedOperation = (entry: [string | OperationMethod, unknown]): entry is NamedOperation => entry[0] in OperationMethod;
 
     static ExtractOperationsFromPath = (path: Path): NamedOperation[] => Object
         .entries(path)
         .filter(OpenApi.IsNamedOperation);
+
+    static ExtractBaseDataFromPath = (path: Path): Record<string, PathBaseData> => ({
+        "$ref": path.$ref,
+        "parameters": path.parameters,
+    });
 
     static ParameterIsRef = (parameter: ParameterOrRef): parameter is { $ref: string } => parameter && "$ref" in parameter;
     static ParameterIsNotRef = (parameter: ParameterOrRef): parameter is Parameter => parameter && !("$ref" in parameter);
