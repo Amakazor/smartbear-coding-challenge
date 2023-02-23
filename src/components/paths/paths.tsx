@@ -2,7 +2,6 @@ import { Path, Span } from "@components";
 import { Path as PathSchema } from "@data/openapi/schema/paths";
 import { TextHelper } from "@utility/text-helper";
 
-
 export type PathsProps = {
     paths: [string, PathSchema][];
     title?: string;

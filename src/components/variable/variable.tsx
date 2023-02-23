@@ -1,8 +1,9 @@
 import { Span } from "@components";
 import { Schema } from "@data/openapi/schema/schema";
 import { ArrayBase, ObjectBase, Primitives } from "@data/openapi/schema/types";
+import { TextHelper } from "@utility/text-helper";
 import { toPairs } from "lodash";
-import * as Icon from "react-feather";
+import { Link as LinkIcon } from "react-feather";
 import { Link } from "react-router-dom";
 
 export type VariableSchema = {
@@ -39,10 +40,10 @@ const parseVariable = (name: string | null, variable: VariableSchema, addSemicol
         return (
             <>
                 {nameElement}{nameElement && " "}
-                <Link to={`/definitions/${refName}`}>
+                <Link to={`/definitions/${TextHelper.Clean(refName)}`}>
                     <Span variant={"body-small"} className={"inline-flex flex-row gap-2 items-center border-b-2 group hover:border-b-blue-400 transition"}>
                         <Span variant={"body-small"} className={"text-blue-300"}>{variable.$ref}</Span>
-                        <Icon.Link size={16} className={"group-hover:text-blue-400 transition"}/>
+                        <LinkIcon size={16} className={"group-hover:text-blue-400 transition"}/>
                     </Span>
                 </Link>
             </>

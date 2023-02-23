@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 const stringToPath = (path: string) => (addBase: string): WithoutSubItemProps => ({
     title: path,
-    url: `${addBase}/${TextHelper.DoubleEncode(path)}`,
+    url: `${addBase}/${TextHelper.Clean(path)}`,
 });
 
 export const useMenuItems = () => {

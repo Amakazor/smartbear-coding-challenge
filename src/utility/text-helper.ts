@@ -15,5 +15,4 @@ export class TextHelper {
     public static CapitalizeFirstLetter = (string:string) => string[0].toUpperCase() + string.slice(1);
     public static Hash = (string:string) => cyrb53(string);
     public static Clean = (string:string) => string.replace(/[^\dA-Za-z]/g, "_");
-    public static DoubleEncode = (string:string) => encodeURIComponent(encodeURIComponent(string));
 }

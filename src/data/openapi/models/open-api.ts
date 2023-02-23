@@ -11,7 +11,7 @@ export type NamedOperation = [
     Operation
 ]
 
-export type PathBaseData = Path["parameters"]  | Path["$ref"]
+export type PathBaseData = Path["parameters"] | Path["$ref"]
 
 export class OpenApi {
     constructor(private _dto: OpenApiSchema) {}
@@ -111,13 +111,13 @@ export class OpenApi {
     static ParameterIsNotRef = (parameter: ParameterOrRef): parameter is Parameter => parameter && !("$ref" in parameter);
 
     static GroupParameters = (parameters: Parameters) => {
-        const nonRefParameters   = parameters.filter(OpenApi.ParameterIsNotRef);
-        const refParameters      = parameters.filter(OpenApi.ParameterIsRef);
+        const nonRefParameters = parameters.filter(OpenApi.ParameterIsNotRef);
+        const refParameters = parameters.filter(OpenApi.ParameterIsRef);
 
-        const pathParameters     = nonRefParameters.filter(parameter => parameter.in === "path");
-        const queryParameters    = nonRefParameters.filter(parameter => parameter.in === "query");
-        const headerParameters   = nonRefParameters.filter(parameter => parameter.in === "header");
-        const bodyParameters     = nonRefParameters.filter(parameter => parameter.in === "body");
+        const pathParameters = nonRefParameters.filter(parameter => parameter.in === "path");
+        const queryParameters = nonRefParameters.filter(parameter => parameter.in === "query");
+        const headerParameters = nonRefParameters.filter(parameter => parameter.in === "header");
+        const bodyParameters = nonRefParameters.filter(parameter => parameter.in === "body");
         const formDataParameters = nonRefParameters.filter(parameter => parameter.in === "formData");
 
         return {
@@ -132,12 +132,12 @@ export class OpenApi {
 
     static HumanizeParameterGroupName = (groupName: ParameterGroupName) => {
         switch (groupName) {
-        case "refParameters": return "Reference Parameters";
-        case "pathParameters": return "Path Parameters";
-        case "queryParameters": return "Query Parameters";
-        case "headerParameters": return "Header Parameters";
-        case "bodyParameters": return "Body Parameters";
-        case "formDataParameters": return "Form Parameters";
+            case "refParameters": return "Reference Parameters";
+            case "pathParameters": return "Path Parameters";
+            case "queryParameters": return "Query Parameters";
+            case "headerParameters": return "Header Parameters";
+            case "bodyParameters": return "Body Parameters";
+            case "formDataParameters": return "Form Parameters";
         }
     };
 }

@@ -8,7 +8,6 @@ import { App } from "./app";
 
 const queryClient = new QueryClient();
 
-
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>

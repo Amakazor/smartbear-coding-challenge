@@ -1,5 +1,6 @@
 import { Span, TextBox } from "@components";
 import { OperationMethod } from "@data/openapi/schema/paths";
+import { TextHelper } from "@utility/text-helper";
 import { Link } from "react-router-dom";
 
 type PathHeaderProps = {
@@ -10,27 +11,27 @@ type PathHeaderProps = {
 
 const operationMethodToTextBox = (method: OperationMethod) => {
     switch (method) {
-    case "get": {
-        return <TextBox.HTTP.Get className={"shrink-0"}/>;
-    }
-    case "post": {
-        return <TextBox.HTTP.Post className={"shrink-0"}/>;
-    }
-    case "put": {
-        return <TextBox.HTTP.Put className={"shrink-0"}/>;
-    }
-    case "delete": {
-        return <TextBox.HTTP.Delete className={"shrink-0"}/>;
-    }
-    case "options": {
-        return <TextBox.HTTP.Get className={"shrink-0"}/>;
-    }
-    case "head": {
-        return <TextBox.HTTP.Get className={"shrink-0"}/>;
-    }
-    case "patch": {
-        return <TextBox.HTTP.Patch className={"shrink-0"}/>;
-    }}
+        case "get": {
+            return <TextBox.HTTP.Get className={"shrink-0"}/>;
+        }
+        case "post": {
+            return <TextBox.HTTP.Post className={"shrink-0"}/>;
+        }
+        case "put": {
+            return <TextBox.HTTP.Put className={"shrink-0"}/>;
+        }
+        case "delete": {
+            return <TextBox.HTTP.Delete className={"shrink-0"}/>;
+        }
+        case "options": {
+            return <TextBox.HTTP.Get className={"shrink-0"}/>;
+        }
+        case "head": {
+            return <TextBox.HTTP.Get className={"shrink-0"}/>;
+        }
+        case "patch": {
+            return <TextBox.HTTP.Patch className={"shrink-0"}/>;
+        }}
 };
 
 export const Header = ({ name, pathName, tags }: PathHeaderProps) => {
@@ -40,7 +41,7 @@ export const Header = ({ name, pathName, tags }: PathHeaderProps) => {
                 {operationMethodToTextBox(name)}
                 <Span variant={"body-uncolored-small"} className={"text-left"}>{pathName}</Span>
             </div>
-            {(tags ?? []).map(tag => <Link to={`/tags/${tag}`} key={tag}><TextBox.Tag className={"shrink-0"}>{tag}</TextBox.Tag></Link>)}
+            {(tags ?? []).map(tag => <Link to={`/tags/${TextHelper.Clean(tag)}`} key={tag}><TextBox.Tag className={"shrink-0"}>{tag}</TextBox.Tag></Link>)}
         </div>
     );
 };

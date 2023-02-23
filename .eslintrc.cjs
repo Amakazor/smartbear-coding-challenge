@@ -21,11 +21,20 @@ module.exports = {
     "plugins": [
         "react",
         "simple-import-sort",
+        "import",
         "unicorn",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "unused-imports"
     ],
     "rules": {
-        "indent": ["error", 4],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+        ],
+        "indent": ["error", 4, { "SwitchCase": 1}],
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "double"],
         "semi": ["error", "always"],
@@ -38,8 +47,13 @@ module.exports = {
         "comma-dangle": ["error", "always-multiline"],
         "comma-spacing": ["error", { "before": false, "after": true }],
         "object-curly-spacing": ["error", "always"],
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+        "no-multi-spaces": "error",
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
         "unicorn/better-regex": "error",
         "unicorn/consistent-destructuring": "error",
         "unicorn/filename-case": ["error", { "case": "kebabCase" }],

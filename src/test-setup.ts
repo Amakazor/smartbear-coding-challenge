@@ -10,7 +10,6 @@ export const restHandlers = [
     }),
 ];
 
-
 const server = setupServer(...restHandlers);
 
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));

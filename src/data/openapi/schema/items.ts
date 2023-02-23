@@ -13,7 +13,7 @@ type typeofItemsWithFile = z.infer<typeof primitivesWithFile>
 export type typeofItemsMulti = z.infer<typeof primitives>
     | (z.infer<typeof arrayBaseMulti> & { items: typeofItemsMulti });
 
-type typeofItemsWithFileMulti  = z.infer<typeof primitivesWithFile>
+type typeofItemsWithFileMulti = z.infer<typeof primitivesWithFile>
     | (z.infer<typeof arrayBaseMulti> & { items: typeofItemsWithFileMulti });
 
 export const items: z.ZodType<typeofItems> = z.union([

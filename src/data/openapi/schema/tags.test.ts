@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { tags } from "./tags";
+
 describe("Tags schema", () => {
     it("should parse when provided with well formed data", () => {
         const tagsFixture = [

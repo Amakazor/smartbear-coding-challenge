@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { externalDocumentation } from "./external-documentation";
+
 describe("External Documentation schema", () => {
     it("should parse well formed data", () => {
         const externalDocumentationFixture = {

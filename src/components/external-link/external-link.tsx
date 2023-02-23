@@ -10,26 +10,25 @@ type ExternalLinkProps = {
 
 const getPrefix = (variant: ExternalLinkProps["variant"]) => {
     switch (variant) {
-    case "mail":
-        return "mailto:";
-    case "phone":
-        return "tel:";
-    default:
-        return "";
+        case "mail":
+            return "mailto:";
+        case "phone":
+            return "tel:";
+        default:
+            return "";
     }
 };
 
 const getIcon = (variant: ExternalLinkProps["variant"]) => {
     switch (variant) {
-    case "mail":
-        return <Mail size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>;
-    case "phone":
-        return <Phone size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>;
-    default:
-        return <Link size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>;
+        case "mail":
+            return <Mail size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>;
+        case "phone":
+            return <Phone size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>;
+        default:
+            return <Link size={16} className={"inline-block ml-1 mb-4 group-hover:text-blue-300"}/>;
     }
 };
-
 
 export const ExternalLink = ({ className, children, href, variant }: ExternalLinkProps) => {
     return (

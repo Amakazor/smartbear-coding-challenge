@@ -1,7 +1,7 @@
-import * as Icon from "react-feather";
+import { Loader as LoaderIcon } from "react-feather";
 
 export const Loader = () => {
     return (
-        <Icon.Loader size={48} className={"animate-spin-slow text-white flex-1"} />
+        <LoaderIcon size={48} className={"animate-spin-slow text-white flex-1"} />
     );
 };

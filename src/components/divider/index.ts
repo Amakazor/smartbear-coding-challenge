@@ -1,3 +1,1 @@
-import { Dots } from "./dots";
-
-export const Divider = { Dots };
+export { Divider } from "./divider";

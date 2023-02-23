@@ -7,13 +7,12 @@ type DefinitionProps = {
     useDivider?: boolean;
 }
 
-
 export const Definition = ({ id, definition, useDivider }: DefinitionProps) =>
     (
         <Span id={id} className={"w-full flex flex-col gap-4 scroll-m-10"}>
             <Span variant={"body-very-large"} className={"text-white max-w-screen-xl self-center"}>{id}:</Span>
             <CodeBox><Variable name={id} variable={definition}/></CodeBox>
-            {useDivider && <Divider.Dots/>}
+            {useDivider && <Divider variant={"dotted"}/>}
         </Span>
     );
 

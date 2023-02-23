@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import * as Icon from "react-feather";
+import { ChevronDown } from "react-feather";
 
 export type CollapsibleBaseProps = {
     header: ReactNode;
@@ -25,7 +25,7 @@ export const CollapsibleBase = ({ header, children, className, isOpen, toggle, c
         <div className={`overflow-hidden w-full ${roundedBottom && "rounded-b-md" } ${roundedTop && "rounded-t-md"} ${className}`}>
             <button type={"button"} className={"flex flex-row items-center justify-between w-full bg-slate-700 scroll-my-4"} {...buttonProperties}>
                 {header}
-                {canOpen && <Icon.ChevronDown className={`transition-transform duration-300 md:mr-4 ${chevronRotation}`} />}
+                {canOpen && <ChevronDown className={`transition-transform duration-300 md:mr-4 ${chevronRotation}`} />}
             </button>
             <div className={`${ canOpen && isOpen ? "h-auto p-4 border-2" : "h-0 invisible"} box-border bg-slate-800 border-t-0 ${roundedBottom && "rounded-b-md" } border-slate-700 overflow-hidden`}>
                 {children}

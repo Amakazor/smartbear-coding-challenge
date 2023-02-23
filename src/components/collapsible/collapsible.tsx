@@ -2,15 +2,14 @@ import { CollapsibleBase, CollapsibleBaseProps } from "@components";
 import { useOpenable } from "@hooks";
 
 type CollapsibleProps = Pick<CollapsibleBaseProps, "header" | "children" | "className"> & {
-    openByDefault?: boolean;
+    startOpen?: boolean;
 }
 
-export const Collapsible = ({ children, header, className, openByDefault }: CollapsibleProps) => {
-    const { isOpen, toggle } = useOpenable(!!openByDefault);
-    return <CollapsibleBase isOpen={isOpen} header={header} toggle={toggle} className={className}>{children}</CollapsibleBase>;
+export const Collapsible = ({ children, header, className, startOpen }: CollapsibleProps) => {
+    return <CollapsibleBase {...useOpenable(!!startOpen)} header={header} className={className}>{children}</CollapsibleBase>;
 };
 
 Collapsible.defaultProps = {
     className: "",
-    openByDefault: false,
+    startOpen: false,
 };

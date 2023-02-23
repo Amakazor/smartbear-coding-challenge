@@ -38,7 +38,7 @@ const parseGfmNode = (node: Node) => {
         );
     }
 
-    return <span key={key}>Unknown</span>;
+    throw new Error(`Unknown node type: ${node.type}`);
 };
 
 const isRoot = (node: Node): node is Root => node.type === "root";

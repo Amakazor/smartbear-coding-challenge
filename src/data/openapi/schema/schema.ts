@@ -12,12 +12,10 @@ const schemaBase = z.object({
     xml: xml.optional(),
 });
 
-
 type typeofSchema = z.infer<typeof schemaBase>
     | { $ref: string }
     | (z.infer<typeof arrayBase> & {items: typeofSchema})
     | (z.infer<typeof objectBase> & {properties: Record<string, typeofSchema>})
-
 
 export const schema: z.ZodType<typeofSchema> = schemaBase.and(z.union([
     primitives,

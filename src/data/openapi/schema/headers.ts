@@ -4,7 +4,6 @@ import { items, typeofItems } from "./items";
 import { arrayBase } from "./types/array-base";
 import { boolean, integer, number, string } from "./types/primitives";
 
-
 const headerDescription = z.object({ description: z.string() });
 
 const headerBase = z.union([

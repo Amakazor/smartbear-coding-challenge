@@ -11,7 +11,7 @@ export type TableOfContentsItemProps = {
     index: number;
 }
 
-export const Item = ({ item:{ id, title }, index }: TableOfContentsItemProps) =>  (
+export const Item = ({ item:{ id, title }, index }: TableOfContentsItemProps) => (
     <li key={id} className={"py-1 group transition flex flex-row"}>
         <a href={`#${id}`}>
             <Span variant={"body-small"} className={"flex flex-row items-center gap-2"}>

@@ -1,7 +1,7 @@
 import { Span } from "@components";
 import { useOpenable } from "@hooks";
 import React from "react";
-import * as Icon from "react-feather";
+import { ChevronDown } from "react-feather";
 
 import { MenuItemBaseProps } from "./menu-item";
 import { SubItem } from "./sub-item";
@@ -33,7 +33,7 @@ export const WithSubItems = ({ subItems, title, bold }: WithSubItemsProps) => {
                 <button type={"button"} className={"w-full outline-safe md:py-2"} onClick={toggle}>
                     <Span variant={"menu"} className={isBold}>
                         {title}
-                        <Icon.ChevronDown className={`md:hidden ${chevronRotation} transition`}/>
+                        <ChevronDown className={`md:hidden ${chevronRotation} transition`}/>
                     </Span>
                 </button>
             </Wrapper>

@@ -16,13 +16,7 @@ export type AccordionProps = {
 
 export const Accordion = ({ collapsibles, exclusive }: AccordionProps) => {
 
-    const {
-        isOpen,
-        close,
-        closeAll,
-        closeAllOpenOne,
-        open,
-    } = useOpenables(fromPairs(collapsibles.map(({ key }) => [key, false])));
+    const { isOpen, close, closeAll, closeAllOpenOne, open } = useOpenables(fromPairs(collapsibles.map(({ key }) => [key, false])));
 
     const toggleElement = (key: string) => {
         if (isOpen[key] && exclusive)

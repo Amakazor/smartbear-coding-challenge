@@ -17,7 +17,6 @@ export const MenuItem = (props:MenuItemProps) => hasSubItems(props)
     ? <WithSubItems {...props}/>
     : <WithoutSubItems {...props}/>;
 
-
 MenuItem.defaultProps = {
     children: null,
     isSubItem: false,

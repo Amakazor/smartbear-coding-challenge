@@ -9,16 +9,16 @@ export type ConditionalRendererProps = {
 
 export const ConditionalRenderer = ({ children, currentState }: ConditionalRendererProps) => {
     switch (currentState) {
-    case DataState.Loading: {
-        return <Loader/>;
-    }
-    case DataState.FetchingError: {
-        return <TextBox.Error>Unexpected error has occurred while fetching documentation, try again later</TextBox.Error>;
-    }
-    case DataState.ParsingError: {
-        return <TextBox.Error>Unexpected error has occurred while parsing documentation, try again later</TextBox.Error>;
-    }
-    case DataState.Success: {
-        return <>{children}</>;
-    }}
+        case DataState.Loading: {
+            return <Loader/>;
+        }
+        case DataState.FetchingError: {
+            return <TextBox.Error>Unexpected error has occurred while fetching documentation, try again later</TextBox.Error>;
+        }
+        case DataState.ParsingError: {
+            return <TextBox.Error>Unexpected error has occurred while parsing documentation, try again later</TextBox.Error>;
+        }
+        case DataState.Success: {
+            return <>{children}</>;
+        }}
 };

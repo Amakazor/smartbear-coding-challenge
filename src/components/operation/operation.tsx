@@ -28,7 +28,7 @@ export const Operation = ({
 
 }:OperationProps) => {
     return (
-        <Collapsible className={"my-2"} openByDefault={openByDefault}
+        <Collapsible className={"my-2"} startOpen={openByDefault}
             header={<Header name={name} pathName={summary ? TextHelper.CapitalizeFirstLetter(summary) : name} tags={tags}/>}
         >
             <div className={"flex flex-col gap-8 items-start relative min-h-[1rem]"}>

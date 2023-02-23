@@ -2,7 +2,6 @@ import { Span } from "@components";
 
 import { Item, TableOfContentsItem } from "./item";
 
-
 type TableOfContentsProps = {
     className?: string;
     items: TableOfContentsItem[];

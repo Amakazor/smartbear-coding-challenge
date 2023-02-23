@@ -17,7 +17,6 @@ const parameterInBody = parameterBase.extend({
     schema: schema,
 });
 
-
 const parameterInQueryBase = parameterBase.extend({
     in: z.literal("query"),
     allowEmptyValue: z.boolean().optional(),

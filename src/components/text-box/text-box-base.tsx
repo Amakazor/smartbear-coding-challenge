@@ -12,16 +12,16 @@ export type TextBoxProps = {
 
 const mapHorizontalVariantToGap = (horizontalVariant: TextBoxProps["horizontalVariant"]) => {
     switch (horizontalVariant) {
-    case "ultra-narrow": {
-        return "gap-0";
-    }
-    case "narrow": {
-        return "gap-8";
-    }
-    case "wide":
-    case "full": {
-        return "gap-20";
-    }}
+        case "ultra-narrow": {
+            return "gap-0";
+        }
+        case "narrow": {
+            return "gap-8";
+        }
+        case "wide":
+        case "full": {
+            return "gap-20";
+        }}
 };
 
 export const TextBoxBase = ({ children, className, horizontalVariant, verticalVariant, rounded, textVariant }: TextBoxProps) => {

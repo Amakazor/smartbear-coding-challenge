@@ -1,17 +1,19 @@
 import { ConditionalRenderer, Paths } from "@components";
 import { openApiContext } from "@context";
+import { DataState } from "@utility/data-state";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import { TextHelper } from "@utility/text-helper";
 import { toPairs } from "lodash";
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 
 export const Tag = () => {
     const tagId = useLoaderData() as ReturnType<typeof stringParameterLoader>;
 
     const { apiData: { PathsByTags }, state } = useContext(openApiContext);
+    const filteredData = toPairs(PathsByTags).filter(([tag]) => TextHelper.Clean(tag) === tagId);
 
-    const filteredData = toPairs(PathsByTags).filter(([tag]) => tag === tagId);
+    if (state === DataState.Success && filteredData.length === 0) redirect("/tags");
 
     return (
         <ConditionalRenderer currentState={state}>
