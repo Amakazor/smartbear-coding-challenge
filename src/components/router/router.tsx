@@ -1,5 +1,5 @@
 import { Layout } from "@components/layout";
-import { Home, Path, Paths, Tag, Tags } from "@routes";
+import { Definition, Definitions, Home, Path, Paths, Tag, Tags } from "@routes";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import {
     createBrowserRouter,
@@ -26,6 +26,13 @@ const router = createBrowserRouter([
             path: "/tags/:tagId",
             element: <Tag/>,
             loader: ({ params }) => stringParameterLoader(params, "tagId"),
+        }, {
+            path: "/definitions",
+            element: <Definitions/>,
+        }, {
+            path: "/definitions/:definitionId",
+            element: <Definition/>,
+            loader: ({ params }) => stringParameterLoader(params, "definitionId"),
         }],
         errorElement: (
             <div className={"text-6xl text-red-600 font-bold flex justify-center items-center min-h-screen font-sans"}>
