@@ -6,7 +6,7 @@ type CollapsibleProps = Pick<CollapsibleBaseProps, "header" | "children" | "clas
 }
 
 export const Collapsible = ({ children, header, className, startOpen }: CollapsibleProps) => {
-    return <CollapsibleBase {...useOpenable(!!startOpen)} header={header} className={className}>{children}</CollapsibleBase>;
+    return <CollapsibleBase {...useOpenable(Boolean(startOpen))} header={header} className={className}>{children}</CollapsibleBase>;
 };
 
 Collapsible.defaultProps = {

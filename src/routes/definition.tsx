@@ -11,7 +11,7 @@ export const Definition = () => {
     const definitionId = useLoaderData() as ReturnType<typeof stringParameterLoader>;
 
     const { apiData: { Definitions }, state } = useContext(openApiContext);
-    const filteredData = toPairs(Definitions).filter(([id]) => TextHelper.Clean(id) === definitionId);
+    const filteredData = toPairs(Definitions).filter(([id]) => TextHelper.clean(id) === definitionId);
 
     if (state === DataState.Success && filteredData.length === 0) redirect("/definitions");
 

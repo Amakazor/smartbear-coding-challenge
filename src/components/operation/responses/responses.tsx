@@ -16,16 +16,17 @@ type CodeNamedResponse = [StatusCode, ResponseSchema];
 const entryIsResponse = (data: StringNamedResponse): data is CodeNamedResponse => statusCode.safeParse(data[0]).success;
 
 const responseHasBody = (response: ResponseSchema) => response.schema || response.headers || response.examples;
-const entryToAccordionCollapsible = ([statusCode, response]: [StatusCode, ResponseSchema]):AccordionElement => ({
+
+const toCollapsibleData = ([status, response]: [StatusCode, ResponseSchema]):AccordionElement => ({
     header: <Span className={"ml-2"}>
-        {statusCode === "default" ? `Default - ${response.description}` : `Status Code ${statusCode} - ${TextHelper.CapitalizeFirstLetter(response.description)}`}
+        {status === "default" ? `Default - ${response.description}` : `Status Code ${status} - ${TextHelper.capitalizeFirstLetter(response.description)}`}
     </Span>,
     body: responseHasBody(response) ? <Response response={response}/> : null,
-    key: statusCode,
+    key: status,
 });
 
 export const Responses = ({ responses }: ResponsesProps) => {
-    const collapsibles = toPairs(responses).filter(entryIsResponse).map(entryToAccordionCollapsible);
+    const collapsibles = toPairs(responses).filter(entryIsResponse).map(toCollapsibleData);
 
     return (
         <div className={"gap-4 justify-stretch self-stretch"}>

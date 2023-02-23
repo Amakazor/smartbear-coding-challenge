@@ -11,11 +11,11 @@ type PathProps = {
     operationsOpen?: boolean;
 }
 export const Path = ({ name, path, operationsOpen }: PathProps) => {
-    const operations = OpenApi.ExtractOperationsFromPath(path);
+    const operations = OpenApi.extractOperationsFromPath(path);
 
     return (
         <li id={name} className={"flex flex-col items-start text-white w-full"}>
-            <Link to={`/paths/${TextHelper.Clean(name)}`} className={"group"}>
+            <Link to={`/paths/${TextHelper.clean(name)}`} className={"group"}>
                 <Span className={"flex flex-row items-center gap-4 py-4 underline group-hover:decoration-blue-300"}>
                     <ChevronsRight size={24}/>
                     {name}

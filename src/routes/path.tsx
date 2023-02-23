@@ -11,7 +11,7 @@ export const Path = () => {
     const pathId = useLoaderData() as ReturnType<typeof stringParameterLoader>;
 
     const { apiData: { Paths }, state } = useContext(openApiContext);
-    const filteredData = toPairs(Paths).filter(([id]) => TextHelper.Clean(id) === pathId);
+    const filteredData = toPairs(Paths).filter(([id]) => TextHelper.clean(id) === pathId);
 
     if (state === DataState.Success && filteredData.length === 0) redirect("/paths");
 

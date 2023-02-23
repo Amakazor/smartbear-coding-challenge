@@ -9,18 +9,18 @@ export type ParametersProps = {
     parameters: ParametersSchema;
 }
 
-const parameterGroupsToAccordionElements = (groupedParameters: ReturnType<typeof OpenApi.GroupParameters>) => toPairs(groupedParameters)
+const parameterGroupsToAccordionElements = (groupedParameters: ReturnType<typeof OpenApi.groupParameters>) => toPairs(groupedParameters)
     .filter(([, parameters]) => parameters.length > 0)
     .map(parameterGroupToAccordionElement);
 
 const parameterGroupToAccordionElement = ([name, parameters]: [string, ParametersSchema]) => ({
-    header: <Span className={"ml-2"}>{OpenApi.HumanizeParameterGroupName(name as ParameterGroupName)}</Span>,
+    header: <Span className={"ml-2"}>{OpenApi.humanizeParameterGroupName(name as ParameterGroupName)}</Span>,
     body: <ParameterGroup parameters={parameters}/>,
     key: name,
 });
 
 export const Parameters = ({ parameters }: ParametersProps) => {
-    const groupedParameters = OpenApi.GroupParameters(parameters);
+    const groupedParameters = OpenApi.groupParameters(parameters);
     const accordionElements:AccordionElement[] = parameterGroupsToAccordionElements(groupedParameters);
 
     return (

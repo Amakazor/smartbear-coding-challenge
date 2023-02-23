@@ -6,8 +6,8 @@ type ResponseProps = {
     response: ResponseSchema;
 }
 
-const TupleToVariableElement = ([name, variable]: [string | null, VariableSchema]) => <Variable key={name} name={name} variable={variable}/>;
-const StringifyExample = ([name, example]: [string, unknown]) => [name, { type: JSON.stringify(example) }] as [string, {type: string}];
+const toVariableComponent = ([name, variable]: [string | null, VariableSchema]) => <Variable key={name} name={name} variable={variable}/>;
+const toString = ([name, example]: [string, unknown]) => [name, { type: JSON.stringify(example) }] as [string, {type: string}];
 
 export const Response = ({ response: { examples, headers, schema } }: ResponseProps) => {
     const schemaColSpan = (headers || examples) ? "md:col-span-3" : "md:col-span-5";
@@ -20,7 +20,7 @@ export const Response = ({ response: { examples, headers, schema } }: ResponsePr
                 <div className={`col-span-2 ${schemaColSpan} row-span-2 flex flex-col`}>
                     <Span>Schema:</Span>
                     <CodeBox className={"grow"}>{
-                        TupleToVariableElement([null, schema])
+                        toVariableComponent([null, schema])
                     }</CodeBox>
                 </div>
             )}
@@ -30,7 +30,7 @@ export const Response = ({ response: { examples, headers, schema } }: ResponsePr
                     <Span>Headers:</Span>
                     <CodeBox className={"grow"}>{
                         toPairs(headers)
-                            .map(TupleToVariableElement)
+                            .map(toVariableComponent)
                     }</CodeBox>
                 </div>
             )}
@@ -40,8 +40,8 @@ export const Response = ({ response: { examples, headers, schema } }: ResponsePr
                     <Span>Examples:</Span>
                     <CodeBox className={"grow"}>{
                         toPairs(examples)
-                            .map(StringifyExample)
-                            .map(TupleToVariableElement)
+                            .map(toString)
+                            .map(toVariableComponent)
                     }</CodeBox>
                 </div>
             )}

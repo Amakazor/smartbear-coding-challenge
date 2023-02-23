@@ -12,6 +12,8 @@ export const Menu = () => {
 
     const menuItems = useMemo(() => menuItemsData.map((menuItem) => (
         <MenuItem {...menuItem} key={menuItem.title}/>
+
+        // other dependencies are already included in menuItemsDataString
         // eslint-disable-next-line react-hooks/exhaustive-deps
     )), [menuItemsDataString]);
 

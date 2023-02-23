@@ -8,7 +8,7 @@ type GfmProps = {
 }
 
 const parseGfmNode = (node: Node) => {
-    const key = TextHelper.Hash(JSON.stringify(node));
+    const key = TextHelper.hash(JSON.stringify(node));
 
     if (isRoot(node)) {
         return <span key={key}>{handleChildren(node)}</span>;

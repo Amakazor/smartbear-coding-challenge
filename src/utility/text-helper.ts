@@ -1,3 +1,6 @@
+//disabled due to external code using a lot of magic numbers
+/* eslint-disable no-magic-numbers */
+
 // cyrb53 (c) 2018 bryc (github.com/bryc)
 const cyrb53 = (str: string, seed = 0) => {
     let h1 = 0xDE_AD_BE_EF ^ seed, h2 = 0x41_C6_CE_57 ^ seed;
@@ -12,7 +15,7 @@ const cyrb53 = (str: string, seed = 0) => {
 };
 
 export class TextHelper {
-    public static CapitalizeFirstLetter = (string:string) => string[0].toUpperCase() + string.slice(1);
-    public static Hash = (string:string) => cyrb53(string);
-    public static Clean = (string:string) => string.replace(/[^\dA-Za-z]/g, "_");
+    public static capitalizeFirstLetter = (string:string) => string[0].toUpperCase() + string.slice(1);
+    public static hash = (string:string) => cyrb53(string);
+    public static clean = (string:string) => string.replace(/[^\dA-Za-z]/g, "_");
 }

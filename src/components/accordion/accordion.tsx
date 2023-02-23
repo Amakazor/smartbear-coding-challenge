@@ -16,13 +16,13 @@ export type AccordionProps = {
 
 export const Accordion = ({ collapsibles, exclusive }: AccordionProps) => {
 
-    const { isOpen, close, closeAll, closeAllOpenOne, open } = useOpenables(fromPairs(collapsibles.map(({ key }) => [key, false])));
+    const { openStates, close, closeAll, closeAllOpenOne, open } = useOpenables(fromPairs(collapsibles.map(({ key }) => [key, false])));
 
     const toggleElement = (key: string) => {
-        if (isOpen[key] && exclusive)
+        if (openStates[key] && exclusive)
             return closeAll();
 
-        if (isOpen[key])
+        if (openStates[key])
             return close(key);
 
         if (exclusive)
@@ -34,15 +34,21 @@ export const Accordion = ({ collapsibles, exclusive }: AccordionProps) => {
     return (
         <div>
             {collapsibles.map(({ header, body, key }, index) => {
-                const borderBottom = index !== collapsibles.length - 1 ? "border-b-2 border-b-slate-500" : "";
+                const borderBottom = index === collapsibles.length - 1 ? "" : "border-b-2 border-b-slate-500";
 
                 const roundedBottom = index === collapsibles.length - 1;
                 const roundedTop = index === 0;
+
+                const styleProps = {
+                    roundedBottom,
+                    roundedTop,
+                    className: borderBottom,
+                };
+
                 const toggle = () => toggleElement(key);
 
                 return (
-                    // eslint-disable-next-line max-len
-                    <CollapsibleBase header={header} key={key} isOpen={isOpen[key]} toggle={toggle} canOpen={body !== null} className={borderBottom} roundedBottom={roundedBottom} roundedTop={roundedTop}>
+                    <CollapsibleBase {...styleProps} header={header} key={key} isOpen={openStates[key]} toggle={toggle} canOpen={body !== null}>
                         {body}
                     </CollapsibleBase>
                 );

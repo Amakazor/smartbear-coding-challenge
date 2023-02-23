@@ -41,7 +41,7 @@ export const Header = ({ name, pathName, tags }: PathHeaderProps) => {
                 {operationMethodToTextBox(name)}
                 <Span variant={"body-uncolored-small"} className={"text-left"}>{pathName}</Span>
             </div>
-            {(tags ?? []).map(tag => <Link to={`/tags/${TextHelper.Clean(tag)}`} key={tag}><TextBox.Tag className={"shrink-0"}>{tag}</TextBox.Tag></Link>)}
+            {(tags ?? []).map(tag => <Link to={`/tags/${TextHelper.clean(tag)}`} key={tag}><TextBox.Tag className={"shrink-0"}>{tag}</TextBox.Tag></Link>)}
         </div>
     );
 };

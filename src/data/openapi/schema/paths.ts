@@ -4,6 +4,18 @@ import { externalDocumentation } from "./external-documentation";
 import { parameter, parameters } from "./parameter";
 import { responses } from "./responses";
 
+// A false positive, but it's not worth disabling the rule for the whole file
+// eslint-disable-next-line no-shadow
+export enum OperationMethod {
+    get = "get",
+    put = "put",
+    post = "post",
+    delete = "delete",
+    options = "options",
+    head = "head",
+    patch = "patch",
+}
+
 const operation = z.object({
     tags: z.array(z.string()).optional(),
     summary: z.string().optional(),
@@ -18,16 +30,6 @@ const operation = z.object({
     deprecated: z.boolean().optional(),
     security: z.array(z.record(z.string(), z.array(z.string()))).optional(),
 });
-
-export enum OperationMethod {
-    get = "get",
-    put = "put",
-    post = "post",
-    delete = "delete",
-    options = "options",
-    head = "head",
-    patch = "patch",
-}
 
 const path = z.object({
     $ref: z.string().optional(),

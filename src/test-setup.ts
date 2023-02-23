@@ -6,6 +6,8 @@ import { afterAll, afterEach, beforeAll } from "vitest";
 
 export const restHandlers = [
     rest.get(`${environment.apiUrl}${environment.apiSchemaPath}`, (request, response, context) => {
+        // Status code is not really a magic number
+        // eslint-disable-next-line no-magic-numbers
         return response(context.status(200), context.json(openApiFixture));
     }),
 ];

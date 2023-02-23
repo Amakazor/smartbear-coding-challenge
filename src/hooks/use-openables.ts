@@ -2,9 +2,9 @@ import { mapValues } from "lodash";
 import { useState } from "react";
 
 export const useOpenables = (initial: Record<string, boolean>) => {
-    const [isOpen, setIsOpen] = useState(initial);
+    const [openStates, setOpenStates] = useState(initial);
 
-    const update = (change: (key:string, isOpen: boolean) => boolean) => setIsOpen(mapValues(isOpen, (isOpen, key) => change(key, isOpen)));
+    const update = (change: (key:string, isOpen: boolean) => boolean) => setOpenStates(mapValues(openStates, (isOpen, key) => change(key, isOpen)));
 
     const toggle = () => update((_, isOpen) => !isOpen);
 
@@ -19,7 +19,7 @@ export const useOpenables = (initial: Record<string, boolean>) => {
     const openAll = () => update(() => true);
 
     return {
-        isOpen,
+        openStates,
         update,
         toggle,
         close,

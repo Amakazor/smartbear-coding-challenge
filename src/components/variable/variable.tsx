@@ -40,7 +40,7 @@ const parseVariable = (name: string | null, variable: VariableSchema, addSemicol
         return (
             <>
                 {nameElement}{nameElement && " "}
-                <Link to={`/definitions/${TextHelper.Clean(refName)}`}>
+                <Link to={`/definitions/${TextHelper.clean(refName)}`}>
                     <Span variant={"body-small"} className={"inline-flex flex-row gap-2 items-center border-b-2 group hover:border-b-blue-400 transition"}>
                         <Span variant={"body-small"} className={"text-blue-300"}>{variable.$ref}</Span>
                         <LinkIcon size={16} className={"group-hover:text-blue-400 transition"}/>
@@ -62,9 +62,9 @@ const parseVariable = (name: string | null, variable: VariableSchema, addSemicol
         return (
             <>
                 { nameElement && <div>{nameElement}</div>}{" {"}
-                {toPairs(variable.properties).map(([name, variable]) => (
-                    <div key={name} className={"ml-4"}>
-                        {parseVariable(name, variable)}
+                {toPairs(variable.properties).map(([key, value]) => (
+                    <div key={key} className={"ml-4"}>
+                        {parseVariable(key, value)}
                     </div>
                 ))}
                 {variable.additionalProperties && (

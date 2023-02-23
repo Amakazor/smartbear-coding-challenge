@@ -46,8 +46,10 @@ export const useOpenApi = ():OpenApiData => {
                 error: null,
             };
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [result.status]);
+
+        // These are the dependencies that we want to watch for changes. Others would cause the effect to run when it's unnecessary.
+        // eslint-disable-next-line
+    }, [result.status, result.dataUpdatedAt, result.errorUpdatedAt]);
 
     return currentResult;
 };

@@ -14,14 +14,14 @@ export type NamedOperation = [
 export type PathBaseData = Path["parameters"] | Path["$ref"]
 
 export class OpenApi {
-    constructor(private _dto: OpenApiSchema) {}
+    constructor(private dto: OpenApiSchema) {}
 
     get PathNames(): string[] {
-        return Object.keys(this._dto.paths);
+        return Object.keys(this.dto.paths);
     }
 
     get Paths() {
-        return this._dto.paths;
+        return this.dto.paths;
     }
 
     get PathsByTags(): Record<string, Paths> {
@@ -31,16 +31,16 @@ export class OpenApi {
         }, {} as Record<string, Paths>) ?? {};
 
         for (const [pathName, path] of toPairs(this.Paths)) {
-            for (const [operationName, operation] of OpenApi.ExtractOperationsFromPath(path)) {
-                for (const tag of operation.tags ?? []) {
-                    if (pathsByTags[tag][pathName] !== undefined) {
+            for (const [operationName, operation] of OpenApi.extractOperationsFromPath(path)) {
+                for (const tag of operation.tags ?? []) {"";
+                    if (pathsByTags[tag][pathName] === undefined) {
                         pathsByTags[tag][pathName] = {
-                            ...pathsByTags[tag][pathName],
+                            ...OpenApi.extractBaseDataFromPath(path),
                             [operationName]: operation,
                         };
                     } else {
                         pathsByTags[tag][pathName] = {
-                            ...OpenApi.ExtractBaseDataFromPath(path),
+                            ...pathsByTags[tag][pathName],
                             [operationName]: operation,
                         };
                     }
@@ -52,39 +52,39 @@ export class OpenApi {
     }
 
     get TagNames(): string[] {
-        return this._dto.tags?.map(tag => tag.name) ?? [];
+        return this.dto.tags?.map(tag => tag.name) ?? [];
     }
 
     get DefinitionNames(): string[] {
-        return Object.keys(this._dto.definitions ?? {});
+        return Object.keys(this.dto.definitions ?? {});
     }
 
     get Definitions () {
-        return this._dto.definitions;
+        return this.dto.definitions;
     }
 
     get SecurityDefinitionNames(): string[] {
-        return Object.keys(this._dto.securityDefinitions ?? {});
+        return Object.keys(this.dto.securityDefinitions ?? {});
     }
 
     get Description() {
-        return this._dto.info.description;
+        return this.dto.info.description;
     }
 
     get Title() {
-        return this._dto.info.title;
+        return this.dto.info.title;
     }
 
     get Contact() {
-        return this._dto.info.contact;
+        return this.dto.info.contact;
     }
 
     get License() {
-        return this._dto.info.license;
+        return this.dto.info.license;
     }
 
     get TermsOfService() {
-        return this._dto.info.termsOfService;
+        return this.dto.info.termsOfService;
     }
 
     static Empty = new OpenApi({
@@ -96,13 +96,13 @@ export class OpenApi {
         paths: {},
     });
 
-    static FromOpenApiData = (openApiData: OpenApiData) => openApiData.state === DataState.Success ? new OpenApi(openApiData.data) : OpenApi.Empty;
+    static fromOpenApiData = (openApiData: OpenApiData) => openApiData.state === DataState.Success ? new OpenApi(openApiData.data) : OpenApi.Empty;
 
     private static IsNamedOperation = (entry: [string | OperationMethod, unknown]): entry is NamedOperation => entry[0] in OperationMethod;
 
-    static ExtractOperationsFromPath = (path: Path): NamedOperation[] => toPairs(path).filter(OpenApi.IsNamedOperation);
+    static extractOperationsFromPath = (path: Path): NamedOperation[] => toPairs(path).filter(OpenApi.IsNamedOperation);
 
-    static ExtractBaseDataFromPath = (path: Path): Record<string, PathBaseData> => ({
+    static extractBaseDataFromPath = (path: Path): Record<string, PathBaseData> => ({
         "$ref": path.$ref,
         "parameters": path.parameters,
     });
@@ -110,7 +110,7 @@ export class OpenApi {
     static ParameterIsRef = (parameter: ParameterOrRef): parameter is { $ref: string } => parameter && "$ref" in parameter;
     static ParameterIsNotRef = (parameter: ParameterOrRef): parameter is Parameter => parameter && !("$ref" in parameter);
 
-    static GroupParameters = (parameters: Parameters) => {
+    static groupParameters = (parameters: Parameters) => {
         const nonRefParameters = parameters.filter(OpenApi.ParameterIsNotRef);
         const refParameters = parameters.filter(OpenApi.ParameterIsRef);
 
@@ -130,7 +130,7 @@ export class OpenApi {
         };
     };
 
-    static HumanizeParameterGroupName = (groupName: ParameterGroupName) => {
+    static humanizeParameterGroupName = (groupName: ParameterGroupName) => {
         switch (groupName) {
             case "refParameters": return "Reference Parameters";
             case "pathParameters": return "Path Parameters";
@@ -142,4 +142,4 @@ export class OpenApi {
     };
 }
 
-export type ParameterGroupName = keyof ReturnType<typeof OpenApi.GroupParameters>;
+export type ParameterGroupName = keyof ReturnType<typeof OpenApi.groupParameters>;

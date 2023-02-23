@@ -9,7 +9,7 @@ export const App = () => {
 
     return (
         <OpenApiContextProvider value={{
-            apiData: OpenApi.FromOpenApiData(openApiData),
+            apiData: OpenApi.fromOpenApiData(openApiData),
             state: openApiData.state,
         }}>
             <Router/>

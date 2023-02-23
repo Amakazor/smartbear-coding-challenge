@@ -8,15 +8,15 @@ export const Tags = () => {
     const { apiData: { PathsByTags }, state } = useContext(openApiContext);
 
     const tableOfContentsItems = toPairs(PathsByTags).map(([tag]) => ({
-        id: TextHelper.Clean(`Paths for tag '${TextHelper.CapitalizeFirstLetter(tag)}'`),
-        title: `Paths for tag '${TextHelper.CapitalizeFirstLetter(tag)}'`,
+        id: TextHelper.clean(`Paths for tag '${TextHelper.capitalizeFirstLetter(tag)}'`),
+        title: `Paths for tag '${TextHelper.capitalizeFirstLetter(tag)}'`,
     }));
 
     return (
         <ConditionalRenderer currentState={state}>
             <div className={"flex flex-col w-full items-center gap-12 max-w-screen-xl px-8 pt-8"}>
                 <TableOfContents className={"max-w-screen-xl w-full"} title={"All paths sorted by tags"} items={tableOfContentsItems}/>
-                {toPairs(PathsByTags).map(([tag, paths]) => <Paths key={tag} title={`Paths for tag '${TextHelper.CapitalizeFirstLetter(tag)}'`} paths={toPairs(paths)}/>)}
+                {toPairs(PathsByTags).map(([tag, paths]) => <Paths key={tag} title={`Paths for tag '${TextHelper.capitalizeFirstLetter(tag)}'`} paths={toPairs(paths)}/>)}
             </div>
         </ConditionalRenderer>
     );
