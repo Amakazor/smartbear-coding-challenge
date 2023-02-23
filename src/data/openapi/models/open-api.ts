@@ -63,10 +63,6 @@ export class OpenApi {
         return this.dto.definitions;
     }
 
-    get SecurityDefinitionNames(): string[] {
-        return Object.keys(this.dto.securityDefinitions ?? {});
-    }
-
     get Description() {
         return this.dto.info.description;
     }

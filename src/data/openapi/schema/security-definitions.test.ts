@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 
 import { securityDefinitions } from "./security-definitions";
 

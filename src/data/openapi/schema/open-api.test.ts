@@ -1,4 +1,3 @@
-import { describe, expect, it } from "vitest";
 
 import { openApi } from "./open-api";
 import { openApiFixture } from "./open-api-fixture";

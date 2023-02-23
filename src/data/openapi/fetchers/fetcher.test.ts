@@ -1,5 +1,4 @@
 import { fetchApiSpec } from "@data/openapi/fetchers/fetcher";
-import { describe, expect, it } from "vitest";
 
 describe("OpenAPI fetcher", () => {
     it("should fetch and parse the API spec", async () => {

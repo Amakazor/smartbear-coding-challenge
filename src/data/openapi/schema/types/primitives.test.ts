@@ -1,6 +1,5 @@
 // This is a test, magic numbers are cool here
 /* eslint-disable no-magic-numbers */
-import { describe, expect, it } from "vitest";
 
 import { boolean, integer, number, primitives, string } from "./primitives";
 

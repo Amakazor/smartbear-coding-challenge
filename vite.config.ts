@@ -18,6 +18,7 @@ export default defineConfig({
         },
     },
     test: {
+        environment: "jsdom",
         env: {
             VITE_API_BASE_URL: "https://base",
             VITE_API_SCHEMA_PATH: "/spec.json",
@@ -29,5 +30,6 @@ export default defineConfig({
             include: ["src/**/*.{ts,tsx,js,jsx}"],
         },
         setupFiles: ["./src/test-setup.ts"],
+        globals: true,
     },
 });
