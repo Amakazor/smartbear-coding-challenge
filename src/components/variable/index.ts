@@ -1,1 +1,2 @@
-export { Variable, type VariableSchema } from "./variable";
+export { type VariableSchema } from "./schemas";
+export { Variable } from "./variable";

@@ -7,7 +7,7 @@ type ResponseProps = {
 }
 
 const toVariableComponent = ([name, variable]: [string | null, VariableSchema]) => <Variable key={name} name={name} variable={variable}/>;
-const toString = ([name, example]: [string, unknown]) => [name, { type: JSON.stringify(example) }] as [string, {type: string}];
+const toString = ([name, example]: [string, unknown]) => [name, { type: JSON.stringify(example) }] as [string, {type: "string"}];
 
 export const Response = ({ response: { examples, headers, schema } }: ResponseProps) => {
     const schemaColSpan = (headers || examples) ? "md:col-span-3" : "md:col-span-5";
