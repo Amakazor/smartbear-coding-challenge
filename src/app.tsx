@@ -1,4 +1,4 @@
-import { Router } from "@components/router";
+import { Router } from "@components";
 import { OpenApiContextProvider } from "@context/.";
 import { OpenApi } from "@data/openapi/models/open-api";
 import { useOpenApi } from "@hooks";

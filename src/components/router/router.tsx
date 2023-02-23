@@ -1,4 +1,4 @@
-import { Layout } from "@components/layout";
+import { Layout } from "@components";
 import { Definition, Definitions, Home, Path, Paths, Tag, Tags } from "@routes";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import {

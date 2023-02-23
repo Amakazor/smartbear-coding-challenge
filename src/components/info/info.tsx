@@ -1,7 +1,4 @@
-import { ConditionalRenderer } from "@components/conditional-renderer";
-import { ExternalLink } from "@components/external-link";
-import { Gfm } from "@components/gfm";
-import { Span } from "@components/span";
+import { ConditionalRenderer, ExternalLink, Gfm, Span } from "@components";
 import { openApiContext } from "@context";
 import { useContext } from "react";
 

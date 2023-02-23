@@ -1,4 +1,4 @@
-import { Span } from "@components/span";
+import { Span } from "@components";
 
 import { Item, TableOfContentsItem } from "./item";
 

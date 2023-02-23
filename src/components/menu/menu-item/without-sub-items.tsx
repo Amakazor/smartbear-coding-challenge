@@ -1,10 +1,11 @@
-import { Span } from "@components/span/span";
-import React, { useRef } from "react";
+import { Span } from "@components";
+import { useRef } from "react";
 import { type FocusEvent } from "react";
-import * as Icon from "react-feather";
+import { ChevronRight } from "react-feather";
 import { Link } from "react-router-dom";
 
-import { MenuItem, MenuItemBaseProps } from "./menu-item";
+import { MenuItemBaseProps } from "./menu-item";
+import { Wrapper } from "./wrapper";
 
 export type WithoutSubItemProps = MenuItemBaseProps & {
     url: string;
@@ -28,14 +29,14 @@ export const WithoutSubItems = ({ url, title, isSubItem, closeParent, tabbable, 
     };
 
     return (
-        <MenuItem.Wrapper isSubItem={isSubItem}>
+        <Wrapper isSubItem={isSubItem}>
             <Link to={url} onBlur={handleBlur} ref={element} className={"outline-safe md:py-2"} tabIndex={tabbable ? 0 : -1}>
                 <Span variant={isSubItem ? "menu-small" : "menu"} className={`${horizontalPadding} ${isBold}`}>
                     {title}
-                    <Icon.ChevronRight className={chevronHidden}/>
+                    <ChevronRight className={chevronHidden}/>
                 </Span>
             </Link>
-        </MenuItem.Wrapper>
+        </Wrapper>
     );
 };
 

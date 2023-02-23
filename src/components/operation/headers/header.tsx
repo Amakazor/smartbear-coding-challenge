@@ -1,5 +1,4 @@
-import { Span } from "@components/span";
-import { TextBox } from "@components/text-box";
+import { Span, TextBox } from "@components";
 import { OperationMethod } from "@data/openapi/schema/paths";
 import { Link } from "react-router-dom";
 

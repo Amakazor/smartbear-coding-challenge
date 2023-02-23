@@ -1,5 +1,4 @@
-import { Header } from "@components/header";
-import { Main } from "@components/main";
+import { Header, Main } from "@components";
 import React from "react";
 import { Outlet } from "react-router-dom";
 

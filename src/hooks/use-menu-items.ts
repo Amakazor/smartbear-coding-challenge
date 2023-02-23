@@ -1,20 +1,21 @@
 import { MenuItemProps, WithoutSubItemProps } from "@components/menu/menu-item";
 import { openApiContext } from "@context/.";
+import { TextHelper } from "@utility/text-helper";
 import { useContext } from "react";
 
-const stringToMenuItem = (base: string, path: string, title?:string): WithoutSubItemProps => {
-    return {
-        title: title ?? path,
-        url: `${base}/${encodeURIComponent(encodeURIComponent(path))}`,
-    };
-};
+const stringToPath = (path: string) => (addBase: string): WithoutSubItemProps => ({
+    title: path,
+    url: `${addBase}/${TextHelper.DoubleEncode(path)}`,
+});
 
 export const useMenuItems = () => {
     const openApi = useContext(openApiContext);
 
-    const paths = openApi.apiData.PathNames.map((path) => stringToMenuItem("/paths", path));
-    const tags = openApi.apiData.TagNames.map((tag) => stringToMenuItem("/tags", tag));
-    const definitions = openApi.apiData.DefinitionNames.map((definition) => stringToMenuItem("/definitions", definition));
+    const paths = openApi.apiData.PathNames.map(stringToPath).map(path => path("/paths"));
+
+    const tags = openApi.apiData.TagNames.map(stringToPath).map(path => path("/tags"));
+
+    const definitions = openApi.apiData.DefinitionNames.map(stringToPath).map(path => path("/definitions"));
 
     const menuItems:MenuItemProps[] = [{
         title: "Paths",

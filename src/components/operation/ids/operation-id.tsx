@@ -1,4 +1,4 @@
-import { Span } from "@components/span";
+import { Span } from "@components";
 
 type OperationIdProps = {
     operationId: string;

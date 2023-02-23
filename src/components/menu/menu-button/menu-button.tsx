@@ -1,4 +1,4 @@
-import { Span } from "@components/span/span";
+import { Span } from "@components";
 import React from "react";
 import * as Icon from "react-feather";
 

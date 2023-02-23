@@ -1,5 +1,6 @@
-import { Span } from "@components/span";
-import { TextBoxBase } from "@components/text-box/text-box-base";
+import { Span } from "@components";
+
+import { TextBoxBase } from "../text-box-base";
 
 export type MethodProps = {
     className?: string;

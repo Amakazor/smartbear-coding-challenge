@@ -1,4 +1,4 @@
-import { Span } from "@components/span";
+import { Span } from "@components";
 import { ArrowDown } from "react-feather";
 
 export type TableOfContentsItem = {

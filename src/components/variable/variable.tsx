@@ -1,8 +1,6 @@
-import { Span } from "@components/span";
+import { Span } from "@components";
 import { Schema } from "@data/openapi/schema/schema";
-import { ArrayBase } from "@data/openapi/schema/types/array-base";
-import { ObjectBase } from "@data/openapi/schema/types/object-base";
-import { Primitives } from "@data/openapi/schema/types/primitives";
+import { ArrayBase, ObjectBase, Primitives } from "@data/openapi/schema/types";
 import { toPairs } from "lodash";
 import * as Icon from "react-feather";
 import { Link } from "react-router-dom";

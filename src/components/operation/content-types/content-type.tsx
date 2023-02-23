@@ -1,5 +1,4 @@
-import { CodeBox } from "@components/code-box";
-import { Span } from "@components/span";
+import { CodeBox, Span } from "@components";
 
 type OperationContentTypesProps = {
     contentTypes: string[];

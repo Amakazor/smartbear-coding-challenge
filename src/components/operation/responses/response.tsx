@@ -1,9 +1,6 @@
-import { CodeBox } from "@components/code-box";
-import { Span } from "@components/span";
+import { CodeBox, Span, Variable, VariableSchema } from "@components";
 import { Response as ResponseSchema } from "@data/openapi/schema/responses";
 import { toPairs } from "lodash";
-
-import { Variable, VariableSchema } from "../variables/variable";
 
 type ResponseProps = {
     response: ResponseSchema;

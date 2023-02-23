@@ -24,26 +24,22 @@ export const useOpenApi = ():OpenApiData => {
 
     useEffect(() => {
         setCurrentResult(() => {
-            if (result.isLoading)
-                return { state: DataState.Loading };
+            if (result.isLoading) return { state: DataState.Loading };
 
-            if (result.isError)
-                return {
-                    state: DataState.FetchingError,
-                    error: result.error,
-                };
+            if (result.isError) return {
+                state: DataState.FetchingError,
+                error: result.error,
+            };
 
-            if (result.isSuccess && !result.data.success)
-                return {
-                    state: DataState.ParsingError,
-                    error: result.data.error,
-                };
+            if (result.isSuccess && !result.data.success) return {
+                state: DataState.ParsingError,
+                error: result.data.error,
+            };
 
-            if (result.isSuccess && result.data.success)
-                return {
-                    state: DataState.Success,
-                    data: result.data.data,
-                };
+            if (result.isSuccess && result.data.success) return {
+                state: DataState.Success,
+                data: result.data.data,
+            };
 
             return {
                 state: DataState.FetchingError,

@@ -1,6 +1,5 @@
+import { CollapsibleBase, CollapsibleBaseProps } from "@components";
 import { useOpenable } from "@hooks";
-
-import { CollapsibleBase, CollapsibleBaseProps } from "./collapsible-base";
 
 type CollapsibleProps = Pick<CollapsibleBaseProps, "header" | "children" | "className"> & {
     openByDefault?: boolean;

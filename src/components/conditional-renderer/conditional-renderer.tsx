@@ -1,5 +1,4 @@
-import { Loader } from "@components/loader";
-import { TextBox } from "@components/text-box";
+import { Loader, TextBox } from "@components";
 import { DataState } from "@utility/data-state";
 import { ReactNode } from "react";
 

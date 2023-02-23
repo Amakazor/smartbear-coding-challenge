@@ -1,5 +1,4 @@
-import { ConditionalRenderer } from "@components/conditional-renderer";
-import { Paths as PathsComponent } from "@components/paths";
+import { ConditionalRenderer, Paths as PathsComponent } from "@components";
 import { openApiContext } from "@context";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import { toPairs } from "lodash";

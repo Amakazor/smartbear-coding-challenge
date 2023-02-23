@@ -1,5 +1,4 @@
-import { CodeBox } from "@components/code-box";
-import { ExternalLink } from "@components/external-link";
+import { CodeBox, ExternalLink } from "@components";
 import { TextHelper } from "@utility/text-helper";
 import { Code, InlineCode, Link, Node, Paragraph, Parent, Root, Text } from "@yozora/ast";
 import GfmParser from "@yozora/parser-gfm";
@@ -9,7 +8,7 @@ type GfmProps = {
 }
 
 const parseGfmNode = (node: Node) => {
-    const key = TextHelper.hash(JSON.stringify(node));
+    const key = TextHelper.Hash(JSON.stringify(node));
 
     if (isRoot(node)) {
         return <span key={key}>{handleChildren(node)}</span>;

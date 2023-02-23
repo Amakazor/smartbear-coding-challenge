@@ -1,5 +1,4 @@
-import { Accordion, AccordionElement } from "@components/accordion/accordion";
-import { Span } from "@components/span";
+import { Accordion, AccordionElement, Span } from "@components";
 import { Response as ResponseSchema, Responses as ResponsesSchema } from "@data/openapi/schema/responses";
 import { StatusCode, statusCode } from "@data/openapi/schema/status-code";
 import { TextHelper } from "@utility/text-helper";
@@ -19,7 +18,7 @@ const entryIsResponse = (data: StringNamedResponse): data is CodeNamedResponse =
 const responseHasBody = (response: ResponseSchema) => response.schema || response.headers || response.examples;
 const entryToAccordionCollapsible = ([statusCode, response]: [StatusCode, ResponseSchema]):AccordionElement => ({
     header: <Span className={"ml-2"}>
-        {statusCode === "default" ? `Default - ${response.description}` : `Status Code ${statusCode} - ${TextHelper.capitalizeFirstLetter(response.description)}`}
+        {statusCode === "default" ? `Default - ${response.description}` : `Status Code ${statusCode} - ${TextHelper.CapitalizeFirstLetter(response.description)}`}
     </Span>,
     body: responseHasBody(response) ? <Response response={response}/> : null,
     key: statusCode,

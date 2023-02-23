@@ -13,7 +13,6 @@ export type NamedOperation = [
 
 export type PathBaseData = Path["parameters"]  | Path["$ref"]
 
-
 export class OpenApi {
     constructor(private _dto: OpenApiSchema) {}
 
@@ -101,9 +100,7 @@ export class OpenApi {
 
     private static IsNamedOperation = (entry: [string | OperationMethod, unknown]): entry is NamedOperation => entry[0] in OperationMethod;
 
-    static ExtractOperationsFromPath = (path: Path): NamedOperation[] => Object
-        .entries(path)
-        .filter(OpenApi.IsNamedOperation);
+    static ExtractOperationsFromPath = (path: Path): NamedOperation[] => toPairs(path).filter(OpenApi.IsNamedOperation);
 
     static ExtractBaseDataFromPath = (path: Path): Record<string, PathBaseData> => ({
         "$ref": path.$ref,

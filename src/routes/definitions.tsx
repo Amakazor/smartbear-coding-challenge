@@ -1,6 +1,4 @@
-import { ConditionalRenderer } from "@components/conditional-renderer";
-import { Definition } from "@components/definition";
-import { TableOfContents } from "@components/table-of-contents";
+import { ConditionalRenderer, Definition, TableOfContents } from "@components";
 import { openApiContext } from "@context";
 import { toPairs } from "lodash";
 import { useContext } from "react";

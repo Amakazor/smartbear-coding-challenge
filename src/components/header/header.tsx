@@ -1,5 +1,4 @@
-import { Menu } from "@components/menu";
-import { Span } from "@components/span";
+import { Menu, Span } from "@components";
 import React from "react";
 import { Link } from "react-router-dom";
 export const Header = () => {

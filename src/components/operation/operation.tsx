@@ -1,5 +1,4 @@
-import { Collapsible } from "@components/collapsible";
-import { Span } from "@components/span";
+import { Collapsible, Span } from "@components";
 import { Operation as OperationSchema, OperationMethod } from "@data/openapi/schema/paths";
 import { TextHelper } from "@utility/text-helper";
 
@@ -30,12 +29,12 @@ export const Operation = ({
 }:OperationProps) => {
     return (
         <Collapsible className={"my-2"} openByDefault={openByDefault}
-            header={<Header name={name} pathName={summary ? TextHelper.capitalizeFirstLetter(summary) : name} tags={tags}/>}
+            header={<Header name={name} pathName={summary ? TextHelper.CapitalizeFirstLetter(summary) : name} tags={tags}/>}
         >
             <div className={"flex flex-col gap-8 items-start relative min-h-[1rem]"}>
                 {operationId && <OperationId operationId={operationId}/>}
                 {description && <Span>{description}</Span>}
-                {(consumes || !!produces) && <ContentTypes consumes={consumes} produces={produces} />}
+                {(consumes || produces) && <ContentTypes consumes={consumes} produces={produces} />}
                 {responses && <Responses responses={responses}/>}
                 {parameters && parameters.length > 0 && <Parameters parameters={parameters}/>}
             </div>

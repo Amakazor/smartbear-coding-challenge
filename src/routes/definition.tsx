@@ -1,5 +1,4 @@
-import { ConditionalRenderer } from "@components/conditional-renderer";
-import { Definition as DefinitionComponent } from "@components/definition";
+import { ConditionalRenderer, Definition as DefinitionComponent } from "@components";
 import { openApiContext } from "@context";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import { toPairs } from "lodash";

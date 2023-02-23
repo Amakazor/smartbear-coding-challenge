@@ -1,7 +1,5 @@
-import { CodeBox } from "@components/code-box";
+import { CodeBox, Variable } from "@components";
 import { Parameter, ParameterOrRef, Parameters as ParametersSchema } from "@data/openapi/schema/parameter";
-
-import { Variable } from "../variables/variable";
 
 export type ParameterGroupProps = {
     parameters: ParametersSchema;

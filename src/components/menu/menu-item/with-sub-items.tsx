@@ -1,9 +1,11 @@
-import { Span } from "@components/span/span";
+import { Span } from "@components";
 import { useOpenable } from "@hooks";
 import React from "react";
 import * as Icon from "react-feather";
 
-import { MenuItem, MenuItemBaseProps } from "./menu-item";
+import { MenuItemBaseProps } from "./menu-item";
+import { SubItem } from "./sub-item";
+import { Wrapper } from "./wrapper";
 
 export type WithSubItemsProps = MenuItemBaseProps & {
     subItems: {
@@ -27,16 +29,16 @@ export const WithSubItems = ({ subItems, title, bold }: WithSubItemsProps) => {
 
     return (
         <div onMouseEnter={open} onMouseLeave={close} className={"md:hover:bg-gray-500"}>
-            <MenuItem.Wrapper>
+            <Wrapper>
                 <button type={"button"} className={"w-full outline-safe md:py-2"} onClick={toggle}>
                     <Span variant={"menu"} className={isBold}>
                         {title}
                         <Icon.ChevronDown className={`md:hidden ${chevronRotation} transition`}/>
                     </Span>
                 </button>
-            </MenuItem.Wrapper>
+            </Wrapper>
             <ul className={`md:absolute w-full left-0 top-full ${subItemsListBorder} ${subItemListVisibility}`}>
-                {subItems.map((item) => <MenuItem.MenuSubItem {...item} {...subItemProps} key={item.title}/>)}
+                {subItems.map((item) => <SubItem {...item} {...subItemProps} key={item.title}/>)}
             </ul>
         </div>
     );

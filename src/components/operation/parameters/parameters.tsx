@@ -1,5 +1,4 @@
-import { Accordion, AccordionElement } from "@components/accordion";
-import { Span } from "@components/span";
+import { Accordion, AccordionElement, Span } from "@components";
 import { OpenApi, ParameterGroupName } from "@data/openapi/models/open-api";
 import { Parameters as ParametersSchema } from "@data/openapi/schema/parameter";
 import { toPairs } from "lodash";

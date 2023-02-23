@@ -1,5 +1,4 @@
-import { ConditionalRenderer } from "@components/conditional-renderer";
-import { Paths as PathsComponent } from "@components/paths";
+import { ConditionalRenderer, Paths } from "@components";
 import { openApiContext } from "@context";
 import { stringParameterLoader } from "@utility/loaders/string-parameter-loader";
 import { TextHelper } from "@utility/text-helper";
@@ -17,7 +16,7 @@ export const Tag = () => {
     return (
         <ConditionalRenderer currentState={state}>
             <div className={"flex flex-col w-full items-center gap-12 max-w-screen-xl px-8 pt-8"}>
-                {filteredData.map(([tag, paths]) => <PathsComponent key={tag} title={`Paths for tag '${TextHelper.capitalizeFirstLetter(tag)}'`} paths={toPairs(paths)}/>)}
+                {filteredData.map(([tag, paths]) => <Paths key={tag} title={`Paths for tag '${TextHelper.CapitalizeFirstLetter(tag)}'`} paths={toPairs(paths)}/>)}
             </div>
         </ConditionalRenderer>
     );

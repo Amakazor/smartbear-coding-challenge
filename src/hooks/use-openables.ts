@@ -1,23 +1,26 @@
-import { fromPairs, toPairs } from "lodash";
+import { mapValues } from "lodash";
 import { useState } from "react";
 
 export const useOpenables = (initial: Record<string, boolean>) => {
     const [isOpen, setIsOpen] = useState(initial);
 
-    const toggle = () => setIsOpen(fromPairs(toPairs(isOpen).map(([key, isOpen]) => [key, !isOpen])));
+    const update = (change: (key:string, isOpen: boolean) => boolean) => setIsOpen(mapValues(isOpen, (isOpen, key) => change(key, isOpen)));
 
-    const close = (element: string) => setIsOpen(fromPairs(toPairs(isOpen).map(([key, isOpen]) => [key, key === element ? false : isOpen])));
-    const closeExcept = (element: string) => setIsOpen(fromPairs(toPairs(isOpen).map(([key, isOpen]) => [key, key === element ? isOpen : false])));
-    const closeAll = () => setIsOpen(fromPairs(toPairs(isOpen).map(([key]) => [key, false])));
-    const closeAllOpenOne = (element: string) => setIsOpen(fromPairs(toPairs(isOpen).map(([key]) => [key, key === element])));
+    const toggle = () => update((_, isOpen) => !isOpen);
 
-    const open = (element: string) => setIsOpen(fromPairs(toPairs(isOpen).map(([key, isOpen]) => [key, key === element ? true : isOpen])));
-    const openExcept = (element: string) => setIsOpen(fromPairs(toPairs(isOpen).map(([key, isOpen]) => [key, key === element ? isOpen : true])));
-    const openAll = () => setIsOpen(fromPairs(toPairs(isOpen).map(([key]) => [key, true])));
-    const openAllCloseOne = (element: string) => setIsOpen(fromPairs(toPairs(isOpen).map(([key]) => [key, key !== element])));
+    const close = (element: string) => update((key, isOpen) => key === element ? false : isOpen);
+    const closeExcept = (element: string) => update((key, isOpen) => key === element ? isOpen : false);
+    const closeAllOpenOne = (element: string) => update((key) => key === element);
+    const closeAll = () => update(() => false);
+
+    const open = (element: string) => update((key, isOpen) => key === element ? true : isOpen);
+    const openExcept = (element: string) => update((key, isOpen) => key === element ? isOpen : true);
+    const openAllCloseOne = (element: string) => update((key) => key !== element);
+    const openAll = () => update(() => true);
 
     return {
         isOpen,
+        update,
         toggle,
         close,
         closeExcept,

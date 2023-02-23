@@ -1,4 +1,4 @@
-import { CollapsibleBase } from "@components/collapsible";
+import { CollapsibleBase } from "@components";
 import { useOpenables } from "@hooks";
 import { fromPairs } from "lodash";
 import { ReactNode } from "react";

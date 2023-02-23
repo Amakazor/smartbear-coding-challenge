@@ -1,7 +1,4 @@
-import { ConditionalRenderer } from "@components/conditional-renderer";
-import { Info } from "@components/info";
-import { Paths as PathsComponent } from "@components/paths";
-import { TableOfContents } from "@components/table-of-contents";
+import { ConditionalRenderer, Info, Paths as PathsComponent, TableOfContents } from "@components";
 import { openApiContext } from "@context";
 import { toPairs } from "lodash";
 import { useContext } from "react";

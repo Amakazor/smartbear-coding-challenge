@@ -1,5 +1,4 @@
-import { Span } from "@components/span";
-import { SpanVariant } from "@components/span/span";
+import { Span, SpanVariant } from "@components";
 import { ReactNode } from "react";
 
 export type TextBoxProps = {

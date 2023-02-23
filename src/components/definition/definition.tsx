@@ -1,7 +1,4 @@
-import { CodeBox } from "@components/code-box";
-import { Divider } from "@components/divider";
-import { Variable } from "@components/operation/variables/variable";
-import { Span } from "@components/span";
+import { CodeBox, Divider, Span, Variable } from "@components";
 import { Schema } from "@data/openapi/schema/schema";
 
 type DefinitionProps = {
